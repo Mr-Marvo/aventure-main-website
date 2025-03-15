@@ -1,16 +1,10 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { Bokor } from "next/font/google";
 import localFont from "next/font/local";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import DownArrow from "../assets/DownArrow";
 import Section2 from "./Section2";
-
-const bokorFont = Bokor({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const baunkFont = localFont({
   src: "../font/Baunk.ttf",
