@@ -1,23 +1,55 @@
 "use client";
-
-import AventureLogo from "../assets/AventureLogo";
+import React, { useEffect, useRef } from "react";
+import { Bokor } from "next/font/google";
+import localFont from "next/font/local";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import DownArrow from "../assets/DownArrow";
 import Section2 from "./Section2";
 
-const Hero = () => {
+const bokorFont = Bokor({
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const baunkFont = localFont({
+  src: "../font/Baunk.ttf",
+});
+
+const Hero: React.FC = () => {
   const handleExploreClick = () => {
-    // Scroll to Section2
     const section2 = document.getElementById("section2");
     if (section2) {
       section2.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const triggerRef = useRef<HTMLDivElement | null>(null);
+  const lettersRef = useRef<HTMLSpanElement[]>([]);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const text = "AVENTURE";
+
+  useEffect(() => {
+    if (!triggerRef.current) return;
+
+    gsap.to(lettersRef.current, {
+      color: "#067106",
+      stagger: 0.2, // Delay for each letter
+      duration: 0.5,
+      scrollTrigger: {
+        trigger: triggerRef.current,
+        scrub: true,
+        start: "top 67%",
+        end: "bottom 30%",
+      },
+    });
+  }, []);
+
   return (
     <>
       <section className="relative w-full h-screen flex overflow-hidden">
-        {/* Background Blur Effect */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-gray-900/40 to-black/80 backdrop-blur-2xl"></div> */}
-
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -27,10 +59,9 @@ const Hero = () => {
           playsInline
         >
           <source src="/background-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
 
-        {/* Overlay (To Darken the Background) */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
 
         {/* Hero Content */}
@@ -51,9 +82,23 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* SVG Logo Instead of Text */}
+        {/* Animated AVENTURE Text */}
         <div className="absolute bottom-20 left-5">
-          <AventureLogo />
+          <div className="pl-9">
+            <div ref={triggerRef} className="flex space-x-2">
+              {text.split("").map((letter, index) => (
+                <span
+                  key={index}
+                  ref={(el) => {
+                    if (el) lettersRef.current[index] = el;
+                  }}
+                  className={`text-[160px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+                >
+                  {letter}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Menu Icon */}
@@ -63,7 +108,8 @@ const Hero = () => {
           </button>
         </div>
       </section>
-      {/* Section2 with an ID for scrolling */}
+
+      {/* Section2 */}
       <Section2 id="section2" />
     </>
   );
