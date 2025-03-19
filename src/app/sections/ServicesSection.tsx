@@ -9,7 +9,7 @@ const services = [
     title: "Product Engineering",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    highlight: "",
+    highlight: "Android & IOS Devices",
     id: 1,
   },
   {
@@ -31,7 +31,7 @@ const services2 = [
     title: "Tech Experts",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    highlight: "",
+    highlight: "Android & IOS Devices",
     id: 4,
   },
 ];
@@ -80,16 +80,16 @@ function ServicesSection() {
   }, []);
 
   return (
-    <div className="bg-black h-screen">
+    <section className="bg-black">
       <div className="h-[10vh]"></div>
-      <div className="pl-[10%] pr-[5%]">
+      <div className="px-4 md:pl-20 md:pr-[7%]">
         <h2 className="text-base uppercase text-gray-300 tracking-wide">
           Services
         </h2>
         <div ref={triggerRef}>
           {text.split("").map((letter, index) => (
             <span
-              className="text-5xl leading-20 font-bold text-black-500 drop-shadow-lg"
+              className="text-2xl md:text-4xl leading-12 md:leading-20 font-bold text-black-500 drop-shadow-lg"
               key={index}
               ref={setlettersRef}
             >
@@ -98,23 +98,24 @@ function ServicesSection() {
           ))}
         </div>
       </div>
-      <div className="bg-black text-white p-10 pl-[10%] pr-[5%]">
-        <div className="mt-8 flex gap-4">
+      <div className="bg-black text-white p-4 md:p-10 md:px-10 lg:px-20">
+        {/* First Row of Services */}
+        <div className="mt-1 flex flex-col md:flex-row gap-4 md:gap-2">
           {services.map((service) => (
             <div
               key={service.id}
               onMouseEnter={() => setHoveredId(service.id)}
-              onMouseLeave={() => setHoveredId(2)} // Reset to "Web Solutions" on mouse leave
+              onMouseLeave={() => setHoveredId(2)}
               className={`
-              relative transition-all duration-300 ease-in-out rounded-lg p-6 border border-white bg-white text-black flex flex-col justify-between
-              ${
-                hoveredId === service.id
-                  ? "w-[60%]" // Expanded width for hovered card
-                  : hoveredId !== null
-                  ? "w-[20%]" // Shrunk width for non-hovered cards
-                  : "w-[25%]" // Default width when no card is hovered
-              }
-            `}
+                relative transition-all duration-300 ease-in-out rounded-4xl p-6 border border-white bg-white text-black flex flex-col justify-between
+                ${
+                  hoveredId === service.id
+                    ? "w-full md:w-[60%] h-[220px]"
+                    : hoveredId !== null
+                    ? "w-full md:w-[40%]"
+                    : "w-full md:w-[40%]"
+                }
+              `}
             >
               <h3 className="text-lg font-semibold">{service.title}</h3>
               {service.highlight && (
@@ -127,22 +128,24 @@ function ServicesSection() {
             </div>
           ))}
         </div>
-        <div className="mt-8 flex gap-4">
+
+        {/* Second Row of Services */}
+        <div className="mt-4 md:mt-2 flex flex-col md:flex-row gap-4 md:gap-2">
           {services2.map((service2) => (
             <div
               key={service2.id}
               onMouseEnter={() => setHovered2Id(service2.id)}
-              onMouseLeave={() => setHovered2Id(3)} // Reset to "Mobile Applications" on mouse leave
+              onMouseLeave={() => setHovered2Id(3)}
               className={`
-              relative transition-all duration-300 ease-in-out rounded-lg p-6 border border-white bg-white text-black flex flex-col justify-between
-              ${
-                hovered2Id === service2.id
-                  ? "w-[60%]" // Expanded width for hovered card
-                  : hovered2Id !== null
-                  ? "w-[20%]" // Shrunk width for non-hovered cards
-                  : "w-[25%]" // Default width when no card is hovered
-              }
-            `}
+                relative transition-all duration-300 ease-in-out rounded-4xl p-6 border border-white bg-white text-black flex flex-col justify-between
+                ${
+                  hovered2Id === service2.id
+                    ? "w-full md:w-[60%] h-[220px]"
+                    : hovered2Id !== null
+                    ? "w-full md:w-[40%]"
+                    : "w-full md:w-[45%]"
+                }
+              `}
             >
               <h3 className="text-lg font-semibold">{service2.title}</h3>
               {service2.highlight && (
@@ -156,7 +159,8 @@ function ServicesSection() {
           ))}
         </div>
       </div>
-    </div>
+      <div className="h-[10vh]"></div>
+    </section>
   );
 }
 

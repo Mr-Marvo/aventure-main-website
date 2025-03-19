@@ -30,12 +30,12 @@ const Hero: React.FC = () => {
 
     gsap.to(lettersRef.current, {
       color: "#067106",
-      stagger: 0.2, // Delay for each letter
+      stagger: 0.2,
       duration: 0.5,
       scrollTrigger: {
         trigger: triggerRef.current,
         scrub: true,
-        start: "top 67%",
+        start: "top 80%",
         end: "bottom 30%",
       },
     });
@@ -59,13 +59,13 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col pt-16 pl-12">
-          <h1 className="text-white text-6xl md:text-[110px] font-normal max-w-6xl">
+        <div className="relative z-10 flex flex-col pt-16 pl-6 md:pl-12">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[100px] font-normal max-w-4xl md:max-w-6xl">
             We Make Concepts <br /> into Tangible Solutions
           </h1>
 
           {/* Explore Button */}
-          <div className="mt-6 pl-[1000px]">
+          <div className="mt-6 pl-0 sm:pl-[500px] md:pl-[1000px]">
             <button
               onClick={handleExploreClick}
               className="flex flex-row items-center justify-center gap-1 px-6 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20"
@@ -77,16 +77,16 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Animated AVENTURE Text */}
-        <div className="absolute bottom-20 left-5">
-          <div className="pl-9">
-            <div ref={triggerRef} className="flex space-x-2">
+        <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5">
+          <div className="pl-2 sm:pl-9">
+            <div ref={triggerRef} className="flex space-x-1 sm:space-x-2">
               {text.split("").map((letter, index) => (
                 <span
                   key={index}
                   ref={(el) => {
                     if (el) lettersRef.current[index] = el;
                   }}
-                  className={`text-[160px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[150px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
                 >
                   {letter}
                 </span>
