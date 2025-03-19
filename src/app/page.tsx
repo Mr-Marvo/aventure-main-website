@@ -1,3 +1,4 @@
+import GoalSection from "./sections/GoalSection";
 import Hero from "./sections/Hero";
 import ServicesSection from "./sections/ServicesSection";
 import Slider from "./sections/Slider";
@@ -12,6 +13,7 @@ export default function Home() {
       <ServicesSection />
       <Slider />
       <Vision />
+      <GoalSection />
     </div>
   );
 }

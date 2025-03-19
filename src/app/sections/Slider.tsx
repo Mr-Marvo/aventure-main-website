@@ -1,54 +1,84 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 // Type for the slider data
 type SliderData = {
-  image: string; // Assuming images are URLs or paths to the images
+  image: string;
   title: string;
   description: string;
 };
 
-// Slider Component
 const Slider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  // const [active, setActive] = useState<string | null>(null);
+  const [scrollDirection, setScrollDirection] = useState<"right" | "left">(
+    "right"
+  );
+  const [isUserScrolling, setIsUserScrolling] = useState(false);
 
-  const scrollLeft = () => {
+  const scrollAmount = 290;
+
+  // Function to scroll in the current direction
+  const scroll = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -290, behavior: "smooth" });
+      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+
+      if (
+        scrollDirection === "right" &&
+        scrollLeft + clientWidth >= scrollWidth
+      ) {
+        setScrollDirection("left");
+      } else if (scrollDirection === "left" && scrollLeft <= 0) {
+        setScrollDirection("right");
+      }
+
+      sliderRef.current.scrollBy({
+        left: scrollDirection === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
-  const scrollRight = () => {
+  // Auto-scroll effect
+  useEffect(() => {
+    if (isUserScrolling) return;
+
+    const interval = setInterval(scroll, 3000);
+    return () => clearInterval(interval);
+  }, [scrollDirection, isUserScrolling]);
+
+  // Handle manual scrolling and resume auto-scroll
+  const handleManualScroll = (direction: "left" | "right") => {
+    setIsUserScrolling(true);
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 290, behavior: "smooth" });
+      sliderRef.current.scrollBy({
+        left: direction === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
     }
+    setTimeout(() => setIsUserScrolling(false), 5000);
   };
 
   const sliderData: SliderData[] = [
     {
-      image: "/Image Block.png", // Replace with the correct image path
-      title: "Coastal Region",
-      description:
-        "Sri Lanka’s beautiful coastline with beaches, surfing spots, and harbours.",
+      image: "/Image Block.png",
+      title: "saas product testing",
+      description: "UI/UX | Web Development.",
     },
     {
-      image: "/Image Block (1).png", // Replace with the correct image path
-      title: "Hill Country",
-      description:
-        "Famous for its mountains, tea plantations, waterfalls, and cool climate.",
+      image: "/Image Block (1).png",
+      title: "saas product testing",
+      description: "UI/UX | Web Development.",
     },
     {
-      image: "/Image Block (2).png", // Replace with the correct image path
-      title: "Wildlife & Nature",
-      description:
-        "National parks, safaris, rainforests, and eco-tourism hotspots.",
+      image: "/Image Block (2).png",
+      title: "saas product testing",
+      description: "UI/UX | Web Development.",
     },
     {
-      image: "/Image Block (3).png", // Replace with the correct image path
-      title: "Northern Region",
-      description: "Rich in Tamil culture, history, and remote beaches.",
+      image: "/Image Block (3).png",
+      title: "saas product testing",
+      description: "UI/UX | Web Development.",
     },
   ];
 
@@ -58,16 +88,17 @@ const Slider = () => {
         <div className="mb-7 md:mb-1">
           <h1 className="text-xl md:text-2xl">FEATURED PROJECTS</h1>
         </div>
+
         {/* Navigation Arrows */}
         <div className="flex justify-end w-full px-4 py-2 gap-3">
           <button
-            onClick={scrollLeft}
+            onClick={() => handleManualScroll("left")}
             className="text-black p-2 rounded-full border border-black hover:bg-black hover:text-white transition-all"
           >
             <FaArrowLeft />
           </button>
           <button
-            onClick={scrollRight}
+            onClick={() => handleManualScroll("right")}
             className="text-black p-2 rounded-full border border-black hover:bg-black hover:text-white transition-all"
           >
             <FaArrowRight />
@@ -86,11 +117,11 @@ const Slider = () => {
                 alt={item.title}
                 className="w-full h-[200px] md:h-[300px] lg:h-[330px] xl:h-[370px] object-cover"
               />
-              <div className="p-2">
-                <h2 className="text-xl md:text-2xl  font-extrabold">
+              <div className="p-4">
+                <h2 className="text-base md:text-lg font-semibold ">
                   {item.title}
                 </h2>
-                <p className="text-sm md:text-base mt-2">{item.description}</p>
+                <p className="text-[12px] font-light">{item.description}</p>
               </div>
             </div>
           ))}
