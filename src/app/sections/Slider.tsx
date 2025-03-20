@@ -43,7 +43,7 @@ const Slider = () => {
   useEffect(() => {
     if (isUserScrolling) return;
 
-    const interval = setInterval(scroll, 3000);
+    const interval = setInterval(scroll, 1000);
     return () => clearInterval(interval);
   }, [scrollDirection, isUserScrolling]);
 
@@ -56,7 +56,7 @@ const Slider = () => {
         behavior: "smooth",
       });
     }
-    setTimeout(() => setIsUserScrolling(false), 5000);
+    setTimeout(() => setIsUserScrolling(false), 1000);
   };
 
   const sliderData: SliderData[] = [

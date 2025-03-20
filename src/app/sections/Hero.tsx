@@ -96,11 +96,11 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Menu Icon */}
-        <div className="absolute top-5 right-5">
+        {/* <div className="absolute top-5 right-5">
           <button className="w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white">
             ☰
           </button>
-        </div>
+        </div> */}
       </section>
 
       {/* Section2 */}
