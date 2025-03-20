@@ -8,13 +8,13 @@ const Footer = () => {
     <footer className="bg-black text-white px-10 py-16 font-sans">
       <div className="max-w-6xl mx-auto text-center md:text-left">
         <h2 className="text-4xl md:text-5xl font-bold">
-          let's discuss your <br />
+          let&apos;s discuss your <br />
           next <span className="text-green-500">→ success.</span>
         </h2>
 
         <div className="flex justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
           <button className="border border-white py-2 px-5 rounded-full hover:bg-white hover:text-black transition">
-            Let’s Talk ↗
+            Let&apos;s Talk ↗
           </button>
           <p className="text-gray-400 mt-4">
             the impact you’d like to make and blow your business mind.
