@@ -6,83 +6,77 @@ import { motion, AnimatePresence } from "framer-motion";
 type RotatingTextProps = {
   texts: string[];
   transition?: object;
-  initial?: "initial" | "animate" | "exit"; // Expect strings here to refer to variant keys
-  animate?: "initial" | "animate" | "exit"; // Expect strings here to refer to variant keys
-  exit?: "initial" | "animate" | "exit"; // Expect strings here to refer to variant keys
+  initial?: keyof typeof variants; // Ensure initial, animate, and exit use valid variant keys
+  animate?: keyof typeof variants;
+  exit?: keyof typeof variants;
   animatePresenceMode?: "sync" | "wait" | "popLayout";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
-  staggerDuration?: number;
-  staggerFrom?: "first" | "last" | "center" | "random" | number;
-  loop?: boolean;
   auto?: boolean;
-  splitBy?: "characters" | "words" | "lines" | string;
   onNext?: (index: number) => void;
   mainClassName?: string;
-  splitLevelClassName?: string;
-  elementLevelClassName?: string;
 };
 
-const RotatingText = forwardRef<unknown, RotatingTextProps>((props, ref) => {
-  const {
-    texts,
-    transition = { type: "spring", damping: 25, stiffness: 300 },
-    initial = "initial", // Default to "initial" string
-    animate = "animate", // Default to "animate" string
-    exit = "exit", // Default to "exit" string
-    animatePresenceMode = "wait",
-    animatePresenceInitial = false,
-    rotationInterval = 2000,
-    staggerDuration = 0,
-    staggerFrom = "first",
-    loop = true,
-    auto = true,
-    splitBy = "characters",
-    onNext,
-    mainClassName,
-    splitLevelClassName,
-    elementLevelClassName,
-    ...rest
-  } = props;
+const variants = {
+  initial: { y: "100%", opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: "-120%", opacity: 0 },
+};
 
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+const RotatingText = forwardRef<HTMLSpanElement, RotatingTextProps>(
+  (
+    {
+      texts,
+      transition = { type: "spring", damping: 25, stiffness: 300 },
+      initial = "initial",
+      animate = "animate",
+      exit = "exit",
+      animatePresenceMode = "wait",
+      animatePresenceInitial = false,
+      rotationInterval = 2000,
+      auto = true,
+      onNext,
+      mainClassName,
+      ...rest
+    },
+    ref
+  ) => {
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const next = useCallback(() => {
-    setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-  }, [texts.length]);
+    const next = useCallback(() => {
+      setCurrentTextIndex((prev) => {
+        const nextIndex = (prev + 1) % texts.length;
+        onNext?.(nextIndex); // Call onNext if provided
+        return nextIndex;
+      });
+    }, [texts.length, onNext]);
 
-  useEffect(() => {
-    if (!auto) return;
-    const intervalId = setInterval(next, rotationInterval);
-    return () => clearInterval(intervalId);
-  }, [next, rotationInterval, auto]);
+    useEffect(() => {
+      if (!auto) return;
+      const intervalId = setInterval(next, rotationInterval);
+      return () => clearInterval(intervalId);
+    }, [next, rotationInterval, auto]);
 
-  // Define the variants object with keys 'initial', 'animate', and 'exit'
-  const variants = {
-    initial: { y: "100%", opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: "-120%", opacity: 0 },
-  };
-
-  return (
-    <motion.span className={mainClassName} {...rest}>
-      <AnimatePresence
-        mode={animatePresenceMode}
-        initial={animatePresenceInitial}
-      >
-        <motion.span
-          key={texts[currentTextIndex]}
-          initial={variants[initial]} // Access the variant object by key
-          animate={variants[animate]} // Access the variant object by key
-          exit={variants[exit]} // Access the variant object by key
-          transition={transition}
+    return (
+      <motion.span className={mainClassName} ref={ref} {...rest}>
+        <AnimatePresence
+          mode={animatePresenceMode}
+          initial={animatePresenceInitial}
         >
-          {texts[currentTextIndex]}
-        </motion.span>
-      </AnimatePresence>
-    </motion.span>
-  );
-});
+          <motion.span
+            key={texts[currentTextIndex]}
+            initial={variants[initial]}
+            animate={variants[animate]}
+            exit={variants[exit]}
+            transition={transition}
+          >
+            {texts[currentTextIndex]}
+          </motion.span>
+        </AnimatePresence>
+      </motion.span>
+    );
+  }
+);
 
 RotatingText.displayName = "RotatingText";
 export default RotatingText;
