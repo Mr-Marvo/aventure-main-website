@@ -60,12 +60,12 @@ const Hero: React.FC = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col pt-16 pl-6 md:pl-12">
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[100px] font-normal max-w-4xl md:max-w-6xl">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[100px] font-normal max-w-4xl md:max-w-6xl">
             We Make Concepts <br /> into Tangible Solutions
           </h1>
 
           {/* Explore Button */}
-          <div className="mt-6 pl-0 sm:pl-[500px] md:pl-[1000px]">
+          <div className="mt-6 pl-0 sm:pl-[500px] lg:pl-[700px] xl:pl-[1000px]">
             <button
               onClick={handleExploreClick}
               className="flex flex-row items-center justify-center gap-1 px-6 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20"
