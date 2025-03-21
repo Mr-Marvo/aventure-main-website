@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { LuArrowUpRight } from "react-icons/lu";
 
 const services = [
   {
@@ -107,10 +108,10 @@ function ServicesSection() {
               onMouseEnter={() => setHoveredId(service.id)}
               onMouseLeave={() => setHoveredId(2)}
               className={`
-                relative transition-all duration-300 ease-in-out rounded-4xl p-6 border border-white bg-white text-black flex flex-col justify-between
+                relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
                 ${
                   hoveredId === service.id
-                    ? "w-full md:w-[60%] h-[220px]"
+                    ? "w-full md:w-[60%] h-[250px]"
                     : hoveredId !== null
                     ? "w-full md:w-[40%]"
                     : "w-full md:w-[40%]"
@@ -122,8 +123,8 @@ function ServicesSection() {
                 <p className="font-bold mt-2">{service.highlight}</p>
               )}
               <p className="text-sm mt-2">{service.description}</p>
-              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-2 w-8 h-8 flex items-center justify-center">
-                ↗
+              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-5 w-14 h-14 flex items-center justify-center">
+                <LuArrowUpRight size={24} />
               </div>
             </div>
           ))}
@@ -137,10 +138,10 @@ function ServicesSection() {
               onMouseEnter={() => setHovered2Id(service2.id)}
               onMouseLeave={() => setHovered2Id(3)}
               className={`
-                relative transition-all duration-300 ease-in-out rounded-4xl p-6 border border-white bg-white text-black flex flex-col justify-between
+                relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
                 ${
                   hovered2Id === service2.id
-                    ? "w-full md:w-[60%] h-[220px]"
+                    ? "w-full md:w-[60%] h-[250px]"
                     : hovered2Id !== null
                     ? "w-full md:w-[40%]"
                     : "w-full md:w-[45%]"
@@ -152,8 +153,8 @@ function ServicesSection() {
                 <p className="font-bold mt-2">{service2.highlight}</p>
               )}
               <p className="text-sm mt-2">{service2.description}</p>
-              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-2 w-8 h-8 flex items-center justify-center">
-                ↗
+              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-5 w-14 h-14 flex items-center justify-center">
+                <LuArrowUpRight size={24} />
               </div>
             </div>
           ))}

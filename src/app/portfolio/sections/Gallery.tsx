@@ -36,10 +36,26 @@ const galleryItems: GalleryItem[] = [
   },
 ];
 
-const categories = ["All", "Web Application", "Mobile Application", "SAAS"];
+// Function to count items per category
+const getCategoryCounts = () => {
+  const counts: Record<string, number> = { All: galleryItems.length };
+  galleryItems.forEach(({ category }) => {
+    counts[category] = (counts[category] || 0) + 1;
+  });
+  return counts;
+};
 
 const Gallery: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const categoryCounts = getCategoryCounts();
+
+  // Define categories in desired order
+  const orderedCategories = [
+    "All",
+    "Web Application",
+    "Mobile Application",
+    "SAAS",
+  ];
 
   const filteredItems =
     selectedCategory === "All"
@@ -49,18 +65,18 @@ const Gallery: React.FC = () => {
   return (
     <div className="container mx-auto p-10">
       {/* Category Filter Buttons */}
-      <div className="mb-6 flex justify-start space-x-6">
-        {categories.map((category, index) => (
+      <div className="mb-6 flex flex-wrap gap-4">
+        {orderedCategories.map((category, index) => (
           <button
             key={index}
-            className={`px-4 py-2 rounded-md text-lg ${
+            className={`px-5 py-2 rounded-full text-lg transition ${
               selectedCategory === category
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-black"
+                ? "bg-gray-200 text-black"
+                : "border border-gray-200 drop-shadow-sm text-black"
             }`}
             onClick={() => setSelectedCategory(category)}
           >
-            {category}
+            {category} ({categoryCounts[category] || 0})
           </button>
         ))}
       </div>
@@ -72,13 +88,14 @@ const Gallery: React.FC = () => {
             key={index}
             className="bg-white rounded-3xl shadow-lg overflow-hidden"
           >
-            <div className="relative w-full h-96">
+            <div className="relative w-full h-96 overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.title}
                 layout="fill"
                 objectFit="cover"
-                priority={index < 2} // Prioritize the first two images for better performance
+                priority={index < 2}
+                className="transition-transform duration-500 hover:scale-125"
               />
             </div>
             <div className="p-4">

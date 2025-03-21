@@ -4,7 +4,7 @@ import ServicesSection from "./sections/ServicesSection";
 import Slider from "./sections/Slider";
 import TestimonialSlider from "./sections/TestimonialSlider";
 import VideoSection from "./sections/VideoSection";
-import Vision from "./sections/Vision";
+// import Vision from "./sections/Vision";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <VideoSection />
       <ServicesSection />
       <Slider />
-      <Vision />
+      {/* <Vision /> */}
       <GoalSection />
       <TestimonialSlider />
     </div>

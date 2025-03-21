@@ -1,10 +1,11 @@
 import React from "react";
 
-const AventureLogoBig = () => {
+const AventureLogoBig = ({ ...props }) => {
   return (
     <svg
-      width="1280"
+      width="1440"
       height="123"
+      {...props}
       viewBox="0 0 1440 123"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

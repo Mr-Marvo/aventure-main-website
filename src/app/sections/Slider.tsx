@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 // Type for the slider data
 type SliderData = {
@@ -15,6 +16,7 @@ const Slider = () => {
     "right"
   );
   const [isUserScrolling, setIsUserScrolling] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
 
   const scrollAmount = 290;
 
@@ -41,11 +43,11 @@ const Slider = () => {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (isUserScrolling) return;
+    if (isUserScrolling || isHovered) return; // Stop auto-scroll on hover
 
     const interval = setInterval(scroll, 1000);
     return () => clearInterval(interval);
-  }, [scrollDirection, isUserScrolling]);
+  }, [scrollDirection, isUserScrolling, isHovered]); // Add isHovered to dependency
 
   // Handle manual scrolling and resume auto-scroll
   const handleManualScroll = (direction: "left" | "right") => {
@@ -112,11 +114,25 @@ const Slider = () => {
               key={id}
               className="flex flex-col w-[280px] md:w-[400px] lg:w-[520px] flex-shrink-0 rounded-3xl overflow-hidden relative bg-white shadow-lg"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-[200px] md:h-[300px] lg:h-[330px] xl:h-[370px] object-cover"
-              />
+              <div
+                className="relative overflow-hidden group"
+                onMouseEnter={() => setIsHovered(true)} // Set hover state to true on hover
+                onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-[200px] md:h-[300px] lg:h-[330px] xl:h-[370px] object-cover transition-transform duration-400 hover:scale-120"
+                />
+                {/* Centered arrow for navigation */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
+                  <Link href="/portfolio">
+                    <button className="text-white p-7 rounded-full bg-[#73ba0d] transition-all">
+                      <FaArrowRight size={20} />
+                    </button>
+                  </Link>
+                </div>
+              </div>
               <div className="p-4">
                 <h2 className="text-base md:text-lg font-semibold ">
                   {item.title}
