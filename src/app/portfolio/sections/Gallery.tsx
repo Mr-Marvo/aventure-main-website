@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 interface GalleryItem {
-  id: any;
+  id: number;
   image: string;
   title: string;
   description: string;
