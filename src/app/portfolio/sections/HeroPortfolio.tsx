@@ -1,4 +1,4 @@
-import Squares from "@/app/components/Squares";
+import Squares from "@/app/components/animations/Squares";
 import React from "react";
 
 const HeroPortfolio: React.FC = () => {

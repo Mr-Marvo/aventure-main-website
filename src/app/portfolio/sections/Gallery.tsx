@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 interface GalleryItem {
+  id: any;
   image: string;
   title: string;
   description: string;
@@ -11,24 +12,28 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
   {
+    id: 1,
     image: "/Image Block.png",
     title: "SAAS PRODUCT TESTING",
     description: "UX/UI Web Development",
     category: "SAAS",
   },
   {
+    id: 2,
     image: "/Image Block (1).png",
     title: "WEB APPLICATION TESTING",
     description: "UX/UI Web Development",
     category: "Web Application",
   },
   {
+    id: 3,
     image: "/Image Block (2).png",
     title: "MOBILE APPLICATION TESTING",
     description: "UX/UI Web Development",
     category: "Mobile Application",
   },
   {
+    id: 4,
     image: "/Image Block (3).png",
     title: "SAAS PRODUCT TESTING",
     description: "UX/UI Web Development",

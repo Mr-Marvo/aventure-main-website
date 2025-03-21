@@ -2,7 +2,7 @@
 
 import React from "react";
 import AventureLogoBig from "../assets/AventureLogoBig";
-import RotatingText from "./RotatingText";
+import RotatingText from "./animations/RotatingText";
 
 const Footer = () => {
   return (
