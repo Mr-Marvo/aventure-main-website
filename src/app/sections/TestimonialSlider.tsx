@@ -6,17 +6,21 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 // Slick Carousel styles (Required)
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FollowCursor from "../components/animations/FollowCursor";
 
 const testimonials = [
   {
+    id: 1,
     text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
     author: "Lorem CEO of Ipsum",
   },
   {
+    id: 2,
     text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
     author: "Lorem CEO of Ipsum",
   },
   {
+    id: 3,
     text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
     author: "Lorem CEO of Ipsum",
   },
@@ -63,6 +67,16 @@ const TestimonialSlider = () => {
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
               <div key={index} className="px-4">
+                <FollowCursor
+                  offsetX={0}
+                  cardWidth="200px"
+                  rotationFactor={40}
+                  enableTilt={true}
+                  animationConfig={{ mass: 5, tension: 350, friction: 40 }}
+                  wheelConfig={{ mass: 1, tension: 200, friction: 30 }}
+                >
+                  {" "}
+                </FollowCursor>
                 <div className="bg-white shadow-lg p-6 rounded-lg text-center">
                   <p className="text-gray-500 text-sm md:text-lg mb-4">
                     {item.text}
