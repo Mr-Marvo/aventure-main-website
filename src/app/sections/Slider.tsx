@@ -3,7 +3,6 @@ import { useRef, useEffect, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
-// Type for the slider data
 type SliderData = {
   image: string;
   title: string;
@@ -16,7 +15,7 @@ const Slider = () => {
     "right"
   );
   const [isUserScrolling, setIsUserScrolling] = useState(false);
-  const [isHovered, setIsHovered] = useState(false); // Track hover state
+  const [isHovered, setIsHovered] = useState(false);
 
   const scrollAmount = 290;
 
@@ -43,11 +42,11 @@ const Slider = () => {
 
   // Auto-scroll effect
   useEffect(() => {
-    if (isUserScrolling || isHovered) return; // Stop auto-scroll on hover
+    if (isUserScrolling || isHovered) return;
 
     const interval = setInterval(scroll, 1000);
     return () => clearInterval(interval);
-  }, [scrollDirection, isUserScrolling, isHovered]); // Add isHovered to dependency
+  }, [scrollDirection, isUserScrolling, isHovered]);
 
   // Handle manual scrolling and resume auto-scroll
   const handleManualScroll = (direction: "left" | "right") => {
@@ -116,15 +115,15 @@ const Slider = () => {
             >
               <div
                 className="relative overflow-hidden group"
-                onMouseEnter={() => setIsHovered(true)} // Set hover state to true on hover
-                onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-[200px] md:h-[300px] lg:h-[330px] xl:h-[370px] object-cover transition-transform duration-400 hover:scale-120"
                 />
-                {/* Centered arrow for navigation */}
+                {/* Centered arrow */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
                   <Link href="/portfolio">
                     <button className="text-white p-7 rounded-full bg-[#73ba0d] transition-all">
