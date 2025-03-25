@@ -1,27 +1,29 @@
 import React, { useRef, useEffect, ReactNode } from "react";
 import { useSpring, animated, to, SpringValue } from "@react-spring/web";
 
+interface AnimationConfig {
+  mass?: number;
+  tension?: number;
+  friction?: number;
+  // Add other possible spring config properties here
+  precision?: number;
+  velocity?: number;
+  clamp?: boolean;
+  duration?: number;
+  easing?: (t: number) => number;
+}
+
 interface FollowCursorProps {
   children: ReactNode;
   className?: string;
-  animationConfig?: {
-    mass?: number;
-    tension?: number;
-    friction?: number;
-    [key: string]: any;
-  };
+  animationConfig?: AnimationConfig;
   hoverScale?: number;
   offsetX?: number;
   cardWidth?: string;
   rotationFactor?: number;
   perspective?: string;
   zoomSensitivity?: number;
-  wheelConfig?: {
-    mass?: number;
-    tension?: number;
-    friction?: number;
-    [key: string]: any;
-  };
+  wheelConfig?: AnimationConfig;
   enableTilt?: boolean;
   enableZoom?: boolean;
   enableDrag?: boolean;
@@ -42,6 +44,7 @@ const calcY = (
 ): number => (x - lx - containerCenterX) / rotationFactor;
 
 const isMobile = (): boolean =>
+  typeof window !== "undefined" &&
   /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 interface TouchState {
@@ -90,7 +93,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
 
   // Touch handling logic
   useEffect(() => {
-    if (!isMobile() || !domTarget.current || !enableDrag) return;
+    if (!domTarget.current || !enableDrag) return;
 
     const card = domTarget.current;
     let isDragging = false;
