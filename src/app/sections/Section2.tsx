@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import RoundImage from "../assets/Section2/RoundImage";
+import DecryptedText from "../components/animations/DecryptedText";
 
 const Section2 = ({ id }: { id: string }) => {
   return (
     <section
       id={id}
-      className="relative w-full h-screen flex flex-col md:flex-row items-center justify-center pt-10 md:pt-20 px-4 md:pl-20 text-black"
+      className="relative w-full h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
     >
       {/* Background Image or Video */}
       <div className="absolute inset-0 top-20 md:top-44 left-0 md:left-[600px]">
@@ -25,13 +26,22 @@ const Section2 = ({ id }: { id: string }) => {
       {/* Content Container */}
       <div className="relative z-10 w-full mx-auto">
         {/* Main Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[110px] font-normal mb-6 md:mb-8">
+        {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[110px] font-normal mb-6 md:mb-8">
           Empowering enterprises
           <br />
           with cutting-edge
           <br />
           solutions
-        </h1>
+        </h1> */}
+        <DecryptedText
+          text="Empowering enterprises with cutting-edge solutions"
+          speed={90}
+          maxIterations={30}
+          animateOn="view"
+          revealDirection="center"
+          sequential={true}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[110px] font-normal mb-6 md:mb-8"
+        />
 
         {/* Subheading */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-44 pt-6 md:pt-12">
