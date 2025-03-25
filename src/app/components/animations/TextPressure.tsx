@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, LegacyRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TextPressureProps {
   text?: string;
