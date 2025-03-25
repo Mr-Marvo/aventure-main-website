@@ -7,7 +7,7 @@ const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative p-5 px-8 flex justify-between items-center  shadow-md z-50">
+    <nav className="relative p-5 px-8 flex justify-between items-center z-50">
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <AventureLogo />
