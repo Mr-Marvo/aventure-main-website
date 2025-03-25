@@ -273,7 +273,10 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
   if (!isClient) {
     return (
       <div className={`container ${className}`} ref={containerRef}>
-        <div className="relative w-[180px] h-[150px] rounded-[15px]">
+        <div
+          className="relative w-[180px] h-[150px] rounded-[15px] bg-cover bg-center"
+          style={{ backgroundImage: "url('/Image Block.png')" }}
+        >
           {children}
         </div>
       </div>
@@ -284,9 +287,10 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
     <div className={`container ${className}`} ref={containerRef}>
       <animated.div
         ref={domTarget}
-        className="absolute w-[180px] h-[150px] bg-cover bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--8mUhEkXE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/km2w1ppw3yw9pd9na7mu.gif')] rounded-[15px] shadow-[0px_10px_30px_-5px_rgba(0,0,0,0.3)] transition-shadow transition-opacity duration-500 [will-change:transform] touch-none"
+        className="absolute w-[180px] h-[150px] rounded-[15px] shadow-[0px_10px_30px_-5px_rgba(0,0,0,0.3)] transition-opacity duration-500 [will-change:transform] touch-none bg-cover bg-center"
         style={{
           width: cardWidth,
+          backgroundImage: "url('/Image Block.png')",
           transform: `perspective(${perspective})`,
           x: x as SpringValue<number>,
           y: y as SpringValue<number>,
