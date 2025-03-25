@@ -1,16 +1,22 @@
-import React, { useRef, useEffect, ReactNode } from "react";
+import React, { useRef, useEffect, ReactNode, useState } from "react";
 import { useSpring, animated, to, SpringValue } from "@react-spring/web";
 
 interface AnimationConfig {
   mass?: number;
   tension?: number;
   friction?: number;
-  // Add other possible spring config properties here
   precision?: number;
   velocity?: number;
   clamp?: boolean;
   duration?: number;
   easing?: (t: number) => number;
+}
+
+interface TouchState {
+  startX?: number;
+  startY?: number;
+  offsetX?: number;
+  offsetY?: number;
 }
 
 interface FollowCursorProps {
@@ -43,17 +49,6 @@ const calcY = (
   rotationFactor: number
 ): number => (x - lx - containerCenterX) / rotationFactor;
 
-const isMobile = (): boolean =>
-  typeof window !== "undefined" &&
-  /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-interface TouchState {
-  startX?: number;
-  startY?: number;
-  offsetX?: number;
-  offsetY?: number;
-}
-
 const FollowCursor: React.FC<FollowCursorProps> = ({
   children,
   className = "",
@@ -69,9 +64,19 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
   enableZoom = true,
   enableDrag = true,
 }) => {
+  const [isClient, setIsClient] = useState(false);
   const domTarget = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const touchState = useRef<TouchState>({});
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const isMobile = (): boolean => {
+    if (!isClient) return false;
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  };
 
   const [{ x, y, rotateX, rotateY, rotateZ, zoom, scale }, api] = useSpring(
     () => ({
@@ -93,7 +98,7 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
 
   // Touch handling logic
   useEffect(() => {
-    if (!domTarget.current || !enableDrag) return;
+    if (!isClient || !domTarget.current || !enableDrag) return;
 
     const card = domTarget.current;
     let isDragging = false;
@@ -203,61 +208,83 @@ const FollowCursor: React.FC<FollowCursorProps> = ({
     enableZoom,
     zoomSensitivity,
     hoverScale,
+    isClient,
   ]);
 
   // Mouse movement logic
   useEffect(() => {
-    if (!isMobile() && enableTilt) {
-      const handleMouseMove = (event: MouseEvent) => {
-        const container = containerRef.current;
-        if (!container) return;
+    if (!isClient || isMobile() || !enableTilt) return;
 
-        const rect = container.getBoundingClientRect();
-        const containerCenterX = rect.left + rect.width / 2;
-        const containerCenterY = rect.top + rect.height / 2;
+    const handleMouseMove = (event: MouseEvent) => {
+      const container = containerRef.current;
+      if (!container) return;
 
-        const px = event.clientX;
-        const py = event.clientY;
+      const rect = container.getBoundingClientRect();
+      const containerCenterX = rect.left + rect.width / 2;
+      const containerCenterY = rect.top + rect.height / 2;
 
-        const xPos = px - containerCenterX;
-        const yPos = py - containerCenterY;
+      const px = event.clientX;
+      const py = event.clientY;
 
-        const parsedCardWidth = parseFloat(cardWidth);
-        const calculatedWidth = container.offsetWidth * (parsedCardWidth / 100);
-        const calculatedOffset = calculatedWidth / 2 + offsetX;
+      const xPos = px - containerCenterX;
+      const yPos = py - containerCenterY;
 
-        api.start({
-          x: xPos + calculatedOffset,
-          y: yPos,
-          rotateX: enableTilt
-            ? calcX(py, y.get(), containerCenterY, rotationFactor)
-            : 0,
-          rotateY: enableTilt
-            ? calcY(px, x.get(), containerCenterX, rotationFactor)
-            : 0,
-          scale: hoverScale,
-        });
-      };
+      const parsedCardWidth = parseFloat(cardWidth);
+      const calculatedWidth = container.offsetWidth * (parsedCardWidth / 100);
+      const calculatedOffset = calculatedWidth / 2 + offsetX;
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }
-  }, [api, y, x, cardWidth, offsetX, hoverScale, enableTilt, rotationFactor]);
+      api.start({
+        x: xPos + calculatedOffset,
+        y: yPos,
+        rotateX: enableTilt
+          ? calcX(py, y.get(), containerCenterY, rotationFactor)
+          : 0,
+        rotateY: enableTilt
+          ? calcY(px, x.get(), containerCenterX, rotationFactor)
+          : 0,
+        scale: hoverScale,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [
+    api,
+    y,
+    x,
+    cardWidth,
+    offsetX,
+    hoverScale,
+    enableTilt,
+    rotationFactor,
+    isClient,
+  ]);
 
   const wheelTransform = (yValue: number): string => {
-    const imgHeight = containerRef.current
-      ? containerRef.current.offsetWidth * (parseFloat(cardWidth) / 100) - 20
-      : window.innerWidth * 0.3 - 20;
+    if (!isClient || !containerRef.current) return "translateY(0)";
+
+    const imgHeight =
+      containerRef.current.offsetWidth * (parseFloat(cardWidth) / 100) - 20;
     return `translateY(${
       -imgHeight * (yValue < 0 ? 6 : 1) - (yValue % (imgHeight * 5))
     }px)`;
   };
 
+  if (!isClient) {
+    return (
+      <div className={`container ${className}`} ref={containerRef}>
+        <div className="relative w-[180px] h-[150px] rounded-[15px]">
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`container ${className}`} ref={containerRef}>
       <animated.div
         ref={domTarget}
-        className="relative absolute w-[180px] h-[150px] bg-cover bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--8mUhEkXE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/km2w1ppw3yw9pd9na7mu.gif')] rounded-[15px] shadow-[0px_10px_30px_-5px_rgba(0,0,0,0.3)] transition-shadow transition-opacity duration-500 [will-change:transform] touch-none"
+        className="absolute w-[180px] h-[150px] bg-cover bg-[url('https://res.cloudinary.com/practicaldev/image/fetch/s--8mUhEkXE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/km2w1ppw3yw9pd9na7mu.gif')] rounded-[15px] shadow-[0px_10px_30px_-5px_rgba(0,0,0,0.3)] transition-shadow transition-opacity duration-500 [will-change:transform] touch-none"
         style={{
           width: cardWidth,
           transform: `perspective(${perspective})`,
