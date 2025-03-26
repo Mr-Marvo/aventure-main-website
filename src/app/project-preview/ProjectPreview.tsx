@@ -67,7 +67,7 @@ const ProjectPreview = () => {
           </h2>
           <h2 className="text-2xl md:text-4xl font-normal leading-relaxed">
             Global user groups rapidly <br /> prototyping designs and optimising{" "}
-            <br /> as per participants' feedback
+            <br /> as per participants&#39; feedback
           </h2>
         </div>
       </div>
@@ -112,7 +112,7 @@ const ProjectPreview = () => {
           </h2>
           <h2 className="text-3xl md:text-4xl xl:text-6xl font-normal leading-12 lg:leading-18">
             Global user <br /> groups rapidly <br /> prototyping <br /> designs
-            and <br /> optimising as <br /> per participants' <br />
+            and <br /> optimising as <br /> per participants&#39; <br />
             feedback
           </h2>
         </div>
