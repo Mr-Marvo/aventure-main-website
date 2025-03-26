@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface GalleryItem {
@@ -51,6 +52,7 @@ const getCategoryCounts = () => {
 };
 
 const Gallery: React.FC = () => {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const categoryCounts = getCategoryCounts();
 
@@ -92,6 +94,7 @@ const Gallery: React.FC = () => {
           <div
             key={index}
             className="bg-white rounded-3xl shadow-lg overflow-hidden"
+            onClick={() => router.push(`/project-preview`)}
           >
             <div className="relative w-full h-96 overflow-hidden">
               <Image

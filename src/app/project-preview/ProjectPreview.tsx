@@ -11,7 +11,7 @@ const ProjectPreview = () => {
         borderColor="#F4F4F4"
         hoverFillColor="#F2F2F2"
       />
-      <div className="absolute z-10 text-white text-left p-10">
+      <div className="absolute z-10 text-black text-left p-10">
         <div className="flex justify-between w-full items-center">
           <p className="text-2xl md:text-5xl font-extralight leading-14">
             Modern saas products and Mobile/web application design effective
