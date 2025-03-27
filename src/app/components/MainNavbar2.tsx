@@ -29,7 +29,7 @@ const MainNavbar2 = () => {
             <Link href="/" onClick={() => setIsOpen(false)}>
               <li className="px-4 py-3 hover:bg-gray-200">About</li>
             </Link>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="/capabilities" onClick={() => setIsOpen(false)}>
               <li className="px-4 py-3 hover:bg-gray-200">Services</li>
             </Link>
           </ul>
