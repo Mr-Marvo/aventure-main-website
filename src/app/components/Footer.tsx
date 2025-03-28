@@ -6,7 +6,6 @@ import RotatingText from "./animations/RotatingText";
 import LinkedInIcon from "../assets/svgs/LinkedInIcon";
 import FacebookIcon from "../assets/svgs/FacebookIcon";
 import InstaIcon from "../assets/svgs/InstaIcon";
-import ArrowAngleRight from "../assets/svgs/ArrowAngleRight";
 import ArrowRight from "../assets/svgs/ArrowRight";
 import ArrowAngleRightWhite from "../assets/svgs/ArrowAngleRightWhite";
 
