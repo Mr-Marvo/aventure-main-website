@@ -224,7 +224,7 @@ const CapabilityPage = () => {
               {text.split("").map((letter, index) => (
                 <span
                   className="text-4xl md:text-6xl leading-12 md:leading-20  text-white drop-shadow-lg"
-                  key={index}
+                  key={`${letter}-${index}`}
                   ref={setlettersRef}
                 >
                   {letter}
@@ -239,12 +239,8 @@ const CapabilityPage = () => {
       <section className="w-full">
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-6">
           {items.map((item, index) => (
-            <PixelCard variant="gray">
-              <div
-                key={index}
-                // className="absolute bg-white px-6 rounded-lg drop-shadow-lg transition-all duration-300 h-[500px] flex flex-col justify-center items-start"
-             className="absolute"
-             >
+            <PixelCard variant="gray" key={index}>
+              <div key={index} className="absolute">
                 <div className="text-start px-20">
                   <div className="text-sm mb-5">{item.icon}</div>
                   <h3 className="text-4xl font-bold mb-5">{item.title}</h3>
