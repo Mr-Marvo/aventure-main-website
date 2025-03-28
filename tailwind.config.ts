@@ -7,7 +7,10 @@ const config: Config = {
       fontFamily: {
         baunk: ["Baunk", "sans-serif"],
       },
-    },
+      colors: {
+        buttonGreen: "var(--buttonGreen)",
+      },
+    },  
   },
   plugins: [],
 };

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { LuArrowUpRight } from "react-icons/lu";
+import { useRouter } from "next/navigation";
 
 const services = [
   {
@@ -41,6 +42,8 @@ function ServicesSection() {
   const [lettersRef, setlettersRef] = useArrayRef<HTMLSpanElement>();
   const [hoveredId, setHoveredId] = useState<number | null>(2);
   const [hovered2Id, setHovered2Id] = useState<number | null>(3);
+
+  const router = useRouter();
 
   const triggerRef = useRef<HTMLDivElement | null>(null);
 
@@ -107,6 +110,7 @@ function ServicesSection() {
               key={service.id}
               onMouseEnter={() => setHoveredId(service.id)}
               onMouseLeave={() => setHoveredId(2)}
+              onClick={() => router.push("/capabilities")}
               className={`
                 relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
                 ${
@@ -137,6 +141,7 @@ function ServicesSection() {
               key={service2.id}
               onMouseEnter={() => setHovered2Id(service2.id)}
               onMouseLeave={() => setHovered2Id(3)}
+              onClick={() => router.push("/capabilities")}
               className={`
                 relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
                 ${
