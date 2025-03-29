@@ -1,10 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import AventureLogoBig from "../assets/AventureLogoBig";
 import RotatingText from "./animations/RotatingText";
+import LinkedInIcon from "../assets/svgs/LinkedInIcon";
+import FacebookIcon from "../assets/svgs/FacebookIcon";
+import InstaIcon from "../assets/svgs/InstaIcon";
+import ArrowRight from "../assets/svgs/ArrowRight";
+import ArrowAngleRightWhite from "../assets/svgs/ArrowAngleRightWhite";
 
 const Footer = () => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <footer className="bg-black text-white px-10 py-16 font-sans">
       <div className="mx-auto text-center md:text-left">
@@ -36,8 +42,19 @@ const Footer = () => {
         </h2>
 
         <div className="flex flex-col md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
-          <button className="border border-white py-2 px-5 rounded-full hover:bg-white hover:text-black transition">
-            Let&apos;s Talk ↗
+          {/* <button className="flex whitespace-nowrap border border-white py-2 px-5 rounded-full transition">
+            Let&apos;s Talk 
+            <ArrowAngleRight/>
+          </button> */}
+          <button
+            className="flex items-center justify-center whitespace-nowrap border border-white py-2 px-4 rounded-full transition"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            Let&apos;s Talk
+            <span className="ml-2">
+              {isHovered ? <ArrowRight /> : <ArrowAngleRightWhite />}
+            </span>
           </button>
           <p className="text-gray-400">
             the impact you’d like to make and blow your business mind.
@@ -49,10 +66,25 @@ const Footer = () => {
             <h3 className="text-sm text-gray-400 uppercase">
               Join our socials
             </h3>
-            <ul className="mt-3 space-y-2">
-              <li className="hover:text-[#73ba0d] cursor-pointer">LinkedIn</li>
-              <li className="hover:text-[#73ba0d] cursor-pointer">Facebook</li>
-              <li className="hover:text-[#73ba0d] cursor-pointer">Instagram</li>
+            <ul className="mt-3 space-y-2 text-left ">
+              <li className="flex items-center cursor-pointer group">
+                <LinkedInIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
+                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+                  LinkedIn
+                </span>
+              </li>
+              <li className="flex items-center cursor-pointer group">
+                <FacebookIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
+                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+                  Facebook
+                </span>
+              </li>
+              <li className="flex items-center cursor-pointer group">
+                <InstaIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
+                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+                  Instagram
+                </span>
+              </li>
             </ul>
           </div>
 
