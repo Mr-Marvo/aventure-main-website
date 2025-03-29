@@ -26,7 +26,7 @@ const MainNavbar = () => {
             <Link href="/portfolio" onClick={() => setIsOpen(false)}>
               <li className="px-4 py-3 hover:bg-gray-200">Portfolio</li>
             </Link>
-            <Link href="/" onClick={() => setIsOpen(false)}>
+            <Link href="/about" onClick={() => setIsOpen(false)}>
               <li className="px-4 py-3 hover:bg-gray-200">About</li>
             </Link>
             <Link href="/capabilities" onClick={() => setIsOpen(false)}>
