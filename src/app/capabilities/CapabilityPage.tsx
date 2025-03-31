@@ -124,7 +124,7 @@ const CapabilityPage = () => {
   return (
     <>
       {/* 1st sec */}
-      <section className="relative w-full h-[80vh] flex items-center bg-white overflow-hidden">
+      <section className="relative w-full h-screen flex items-center bg-white overflow-hidden">
         <Squares
           speed={0.3}
           squareSize={40}
