@@ -133,9 +133,9 @@ const CapabilityPage = () => {
           hoverFillColor="#F1F1F1"
         />
 
-        <div className="absolute z-10 text-black text-left p-10 w-full flex items-center justify-center">
-          <div className="max-w-6xl w-full">
-            <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal text-end">
+        <div className="absolute z-10 text-black text-left p-2 md:p-10 w-full flex items-center justify-center">
+          <div className="md:max-w-6xl w-full">
+            <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal text-end ">
               We provide innovative, tailored IT
             </p>
             <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal">
@@ -229,7 +229,7 @@ const CapabilityPage = () => {
                 >
                   {letter}
                 </span>
-              ))}
+              ))} 
             </div>
           </div>
         </div>
