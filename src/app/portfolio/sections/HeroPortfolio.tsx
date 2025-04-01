@@ -17,7 +17,7 @@ const HeroPortfolio: React.FC = () => {
             Modern saas products and Mobile/web application design effective
             solutions that deliver results.
           </p>
-          <div className="w-[70%]"></div>
+          <div className="w-[70%] hidden md:block"></div>
         </div>
       </div>
     </section>
