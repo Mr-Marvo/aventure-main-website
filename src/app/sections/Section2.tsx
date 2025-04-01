@@ -1,10 +1,43 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import RoundImage from "../assets/Section2/RoundImage";
 import DecryptedText from "../components/animations/DecryptedText";
 
 const Section2 = ({ id }: { id: string }) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Calculate the distance between the mouse and the center of the image
+    const imageCenter = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
+
+    // Apply a "magnet" effect that moves the image towards the mouse
+    const distanceX = (mousePosition.x - imageCenter.x) * 0.1; // Control intensity of magnet
+    const distanceY = (mousePosition.y - imageCenter.y) * 0.1; // Control intensity of magnet
+
+    setImagePosition({
+      x: distanceX,
+      y: distanceY,
+    });
+  }, [mousePosition]);
+
   return (
     <section
       id={id}
@@ -26,13 +59,6 @@ const Section2 = ({ id }: { id: string }) => {
       {/* Content Container */}
       <div className="relative z-10 w-full mx-auto">
         {/* Main Heading */}
-        {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[110px] font-normal mb-6 md:mb-8">
-          Empowering enterprises
-          <br />
-          with cutting-edge
-          <br />
-          solutions
-        </h1> */}
         <DecryptedText
           text="Empowering enterprises with cutting-edge solutions"
           speed={90}
@@ -40,13 +66,18 @@ const Section2 = ({ id }: { id: string }) => {
           animateOn="view"
           revealDirection="center"
           sequential={true}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[110px] font-normal mb-6 md:mb-8"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[120px] font-normal mb-6 md:mb-8"
         />
 
         {/* Subheading */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-44 pt-6 md:pt-12">
-          {/* Round Image */}
-          <div className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64">
+          {/* Round Image with Mouse Magnet Effect */}
+          <div
+            className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 transition-transform duration-300 ease-in-out"
+            style={{
+              transform: `translate(${imagePosition.x}px, ${imagePosition.y}px)`,
+            }}
+          >
             <RoundImage />
           </div>
 

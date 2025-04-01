@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 // Slick Carousel styles (Required)
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FollowCursor from "../components/animations/FollowCursor";
+// import FollowCursor from "../components/animations/FollowCursor";
 
 const testimonials = [
   {
@@ -67,7 +67,7 @@ const TestimonialSlider = () => {
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
               <div key={index} className="px-4">
-                <FollowCursor
+                {/* <FollowCursor
                   offsetX={0}
                   cardWidth="200px"
                   rotationFactor={40}
@@ -76,7 +76,7 @@ const TestimonialSlider = () => {
                   wheelConfig={{ mass: 1, tension: 200, friction: 30 }}
                 >
                   {" "}
-                </FollowCursor>
+                </FollowCursor> */}
                 <div className="bg-white shadow-lg p-6 rounded-lg text-center">
                   <p className="text-gray-500 text-sm md:text-lg mb-4">
                     {item.text}
