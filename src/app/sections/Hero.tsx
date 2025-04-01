@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col pt-16 pl-6 md:pl-12">
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[100px] font-normal max-w-4xl md:max-w-6xl">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[120px] font-normal max-w-4xl md:max-w-6xl">
             We Make Concepts <br /> into Tangible Solutions
           </h1>
 
@@ -71,14 +71,14 @@ const Hero: React.FC = () => {
               className="flex flex-row items-center justify-center gap-1 px-6 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20"
             >
               <DownArrow />
-              <span className="-ml-2 mt-2">EXPLORE</span>
+              <span className="-ml-2 mt-2 text-lg">EXPLORE</span>
             </button>
           </div>
         </div>
 
         {/* Animated AVENTURE Text */}
         <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5">
-          <div className="pl-2 sm:pl-9">
+          <div className="">
             <div ref={triggerRef} className="flex space-x-1 sm:space-x-2">
               {text.split("").map((letter, index) => (
                 <span
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
                   ref={(el) => {
                     if (el) lettersRef.current[index] = el;
                   }}
-                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[150px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[170px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
                 >
                   {letter}
                 </span>

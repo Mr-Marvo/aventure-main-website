@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white px-10 py-16 font-sans">
       <div className="mx-auto text-center md:text-left">
-        <h2 className="text-4xl md:text-6xl font-normal">
+        <h2 className="text-4xl md:text-[50px] lg:text-[70px] xl:text-[120px] font-extralight">
           We’re always on the lookout <br />
           for next
           <span className="text-[#73ba0d]">
@@ -47,7 +47,7 @@ const Footer = () => {
             <ArrowAngleRight/>
           </button> */}
           <button
-            className="flex items-center justify-center whitespace-nowrap border border-white py-2 px-4 rounded-full transition"
+            className="flex items-center justify-center whitespace-nowrap text-lg border border-white py-2 px-4 rounded-full transition"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -56,7 +56,7 @@ const Footer = () => {
               {isHovered ? <ArrowRight /> : <ArrowAngleRightWhite />}
             </span>
           </button>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-lg lg:text-2xl xl:text-[40px]">
             the impact you’d like to make and blow your business mind.
           </p>
         </div>
@@ -66,22 +66,23 @@ const Footer = () => {
             <h3 className="text-sm text-gray-400 uppercase">
               Join our socials
             </h3>
-            <ul className="mt-3 space-y-2 text-left ">
-              <li className="flex items-center cursor-pointer group">
-                <LinkedInIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
-                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+
+            <ul className="mt-3 space-y-2">
+              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+                <LinkedInIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
+                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   LinkedIn
                 </span>
               </li>
-              <li className="flex items-center cursor-pointer group">
-                <FacebookIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
-                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+                <FacebookIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
+                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Facebook
                 </span>
               </li>
-              <li className="flex items-center cursor-pointer group">
-                <InstaIcon className="opacity-0 transform translate-x-[-20px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-in-out mr-4" />
-                <span className="text-4xl transition-all duration-300 ease-in-out group-hover:ml-8">
+              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+                <InstaIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
+                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Instagram
                 </span>
               </li>
@@ -92,9 +93,16 @@ const Footer = () => {
             <h3 className="text-sm text-gray-400 uppercase">
               Monday–Friday, 9AM–6PM
             </h3>
-            <p className="mt-3 font-bold text-lg">info@aventure.com</p>
-            <p className="mt-2 text-lg">+9411 234 5678</p>
-            <p className="mt-1 text-sm text-gray-400">
+            <p className=" font-bold text-2xl md:text-[26px] lg:text-[36px]">
+              info@aventure.com
+            </p>
+            <h3 className="mt-5 text-sm text-gray-400 uppercase">
+              WE RESPOND WITHIN A FEW HOURS
+            </h3>
+            <p className="text-2xl md:text-[26px] lg:text-[36px]">
+              +9411 234 5678
+            </p>
+            <p className="mt-5 text-sm text-gray-400">
               3RD FLOOR, SOMANANDA RD, HORANA, SRI LANKA
             </p>
           </div>
