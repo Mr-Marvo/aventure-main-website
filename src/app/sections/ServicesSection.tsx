@@ -17,8 +17,9 @@ const services = [
   },
   {
     title: "Web Solutions",
-    description: "Mobile friendly custom design including UI-UX things.",
-    highlight: "Mobile friendly custom design including UI-UX things.",
+    description:
+      "Mobile friendly custom design including UI-UX things.Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+    highlight: "Mobile friendly custom design.",
     id: 2,
     isDefault: true, // Default hovered state
   },
@@ -81,8 +82,8 @@ function ServicesSection() {
         end: "bottom 85%",
       },
       color: "#ffffff",
-      duration: 1,
-      stagger: 1,
+      duration: 5,
+      stagger: 5,
     });
 
     return () => {
@@ -126,22 +127,22 @@ function ServicesSection() {
                 className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
                          ${
                            isHovered
-                             ? "w-full md:w-[60%] h-[250px]"
+                             ? "w-full md:w-[60%] h-[280px]"
                              : "w-full md:w-[40%]"
                          }`}
               >
-                <h3 className="text-lg xl:text-4xl font-semibold">
+                <h3 className="text-sm lg:text-lg xl:text-4xl font-semibold">
                   {service.title}
                 </h3>
                 <div
                   className={`transition-all duration-300 ease-in-out ${
                     isHovered
-                      ? "flex flex-row justify-between gap-10"
+                      ? "flex flex-col md:flex-row justify-between gap-3 md:gap-10"
                       : "flex flex-col"
                   }`}
                 >
                   {isHovered && (
-                    <p className="font-bold text-lg xl:text-[24px]">
+                    <p className="font-bold text-sm lg:text-lg xl:text-[24px]">
                       {service.highlight}
                     </p>
                   )}
@@ -149,7 +150,7 @@ function ServicesSection() {
                     {service.description}
                   </p>
                 </div>
-                <div className="absolute top-9 right-9 w-10 h-10 md:w-20 md:h-20 flex items-center justify-center">
+                <div className="absolute top-9 right-9 w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
                   <ArrowWithCircle size={24} />
                 </div>
               </div>
@@ -173,22 +174,22 @@ function ServicesSection() {
                 className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
                          ${
                            isHovered
-                             ? "w-full md:w-[60%] h-[250px]"
+                             ? "w-full md:w-[60%] h-[280px]"
                              : "w-full md:w-[40%]"
                          }`}
               >
-                <h3 className="text-lg xl:text-4xl font-semibold">
+                <h3 className="text-sm lg:text-lg xl:text-4xl font-semibold">
                   {service2.title}
                 </h3>
                 <div
                   className={`transition-all duration-300 ease-in-out ${
                     isHovered
-                      ? "flex flex-row justify-between gap-10"
+                      ? "flex flex-col md:flex-row justify-between gap-3 md:gap-10"
                       : "flex flex-col"
                   }`}
                 >
                   {isHovered && (
-                    <p className="font-bold text-lg xl:text-[24px]">
+                    <p className="font-bold text-sm lg:text-lg xl:text-[24px]">
                       {service2.highlight}
                     </p>
                   )}
@@ -196,7 +197,7 @@ function ServicesSection() {
                     {service2.description}
                   </p>
                 </div>
-                <div className="absolute top-9 right-9 w-10 h-10 md:w-20 md:h-20 flex items-center justify-center">
+                <div className="absolute top-9 right-9 w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
                   <ArrowWithCircle size={24} />
                 </div>
               </div>

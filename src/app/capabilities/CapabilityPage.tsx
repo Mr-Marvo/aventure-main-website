@@ -133,17 +133,15 @@ const CapabilityPage = () => {
           hoverFillColor="#F1F1F1"
         />
 
-        <div className="absolute z-10 text-black text-left p-2 md:p-10 w-full flex items-center justify-center">
-          <div className="md:max-w-6xl w-full">
-            <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal text-end ">
-              We provide innovative, tailored IT
+        <div className="absolute z-10 text-black text-left p-5 md:p-10 w-full">
+          <div className="flex flex-col justify-start w-full items-start">
+            <p className="text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal pl-5 sm:pl-10 md:pl-20 lg:pl-20 xl:pl-40">
+              We provide innovative, tailored IT solutions
             </p>
-            <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal">
-              solutions to enhance efficiency, security, and
+            <p className="text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal pl-5">
+              to enhance efficiency, security, and growth.
             </p>
-            <p className="text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal">
-              growth.
-            </p>
+            <div className="hidden md:block w-[70%]"></div>
           </div>
         </div>
 
@@ -210,26 +208,18 @@ const CapabilityPage = () => {
       {/* text */}
       <section className="w-full bg-white px-4 py-5 lg:h-[591px] flex items-center justify-start">
         <div className=" items-center">
-          <p className="text-gray-500 text-base">WHY WE</p>
-          <div className="w-full md:max-w-5xl mt-2 pl-5">
-            {/* old text without animation */}
-            {/* <p className="text-4xl lg:text-6xl pl-4">
-              At aventure, we don’t just provide IT <br /> solutions—we deliver
-              innovation, security, <br /> and scalability tailored to your
-              business <br />
-              needs. Here’s why businesses trust us,
-            </p>  */}
-
+          <p className="text-gray-500 text-base pl-0 md:pl-10">WHY WE</p>
+          <div className="w-full md:max-w-5xl mt-2 pl-5 md:pl-10">
             <div ref={triggerRef}>
               {text.split("").map((letter, index) => (
                 <span
-                  className="text-4xl md:text-6xl leading-12 md:leading-20  text-white drop-shadow-lg"
+                  className="text-4xl md:text-6xl leading-12  md:leading-20  text-white drop-shadow-lg"
                   key={`${letter}-${index}`}
                   ref={setlettersRef}
                 >
                   {letter}
                 </span>
-              ))} 
+              ))}
             </div>
           </div>
         </div>
