@@ -60,9 +60,9 @@ const Hero: React.FC = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col pt-16 pl-6 md:pl-12">
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[120px] font-normal max-w-4xl md:max-w-6xl">
+          <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[80px] xl:text-[120px] 3xl:text-[190px] font-light max-w-4xl md:max-w-6xl 2xl:max-w-[1920px]">
             We Make Concepts <br /> into Tangible Solutions
-          </h1>
+          </p>
 
           {/* Explore Button */}
           <div className="mt-6 pl-0 sm:pl-[500px] lg:pl-[700px] xl:pl-[1000px]">
@@ -86,7 +86,7 @@ const Hero: React.FC = () => {
                   ref={(el) => {
                     if (el) lettersRef.current[index] = el;
                   }}
-                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[170px] font-normal text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[170px] 3xl:text-[210px] text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
                 >
                   {letter}
                 </span>
