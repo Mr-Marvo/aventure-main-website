@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import AventureLogoWhite from "../assets/AventureLogoWhite";
+import MenuIcon from "../assets/svgs/MenuIcon";
 
 const MainNavbar2 = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,10 +15,10 @@ const MainNavbar2 = () => {
       </Link>
 
       <button
-        className="w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/70 rounded-full text-white"
+        className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-black hover:bg-black/70 rounded-full text-white"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? "✖" : "☰"}
+        {isOpen ? "✖" : <MenuIcon color="white" />}
       </button>
 
       {isOpen && (

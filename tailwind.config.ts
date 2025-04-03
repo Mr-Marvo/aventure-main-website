@@ -10,7 +10,7 @@ const config: Config = {
       colors: {
         buttonGreen: "var(--buttonGreen)",
       },
-    },  
+    },
   },
   plugins: [],
 };
