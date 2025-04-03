@@ -84,7 +84,7 @@ const Slider = () => {
   ];
 
   return (
-    <section className="h-screen  p-4 md:p-20">
+    <section className="h-[500px] md:h-screen p-4 md:p-20">
       <div className="flex flex-col justify-between w-full z-30 overflow-y-hidden">
         <div className="mb-7 md:mb-1">
           <h1 className="text-xl md:text-2xl">FEATURED PROJECTS</h1>
