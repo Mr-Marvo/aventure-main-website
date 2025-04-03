@@ -56,7 +56,7 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <section className="bg-white h-screen flex items-start md:items-center py-16">
+    <section className="bg-white h-[500px] md:h-screen flex items-start md:items-center py-16">
       <div className="w-80 sm:w-2xl md:w-3xl lg:w-5xl xl:w-6xl mx-auto px-1 md:px-4">
         <h2 className="text-2xl md:text-4xl px-5 font-bold text-center md:text-right mb-8">
           Love from clients

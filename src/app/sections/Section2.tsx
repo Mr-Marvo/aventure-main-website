@@ -47,7 +47,7 @@ const Section2 = ({ id }: { id: string }) => {
     <section
       ref={sectionRef}
       id={id}
-      className="relative w-full h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
+      className="relative w-full h-[500px] md:h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <section className="relative w-full h-screen flex overflow-hidden">
+      <section className="relative w-full h-[500px] md:h-screen flex overflow-hidden">
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
