@@ -17,7 +17,7 @@ const Footer = () => {
         <h2 className="text-4xl md:text-[50px] lg:text-[70px] xl:text-[120px] font-extralight">
           We’re always on the lookout <br />
           for next
-          <span className="text-[#73ba0d]">
+          <span className="text-[#73ba0d] font-bold">
             {" "}
             →{" "}
             <RotatingText
@@ -29,12 +29,6 @@ const Footer = () => {
                 "growth.",
               ]}
               mainClassName="text-[#73ba0d] inline-block ml-2"
-              // staggerFrom="last"
-              // initial={{ y: "100%" }}
-              // animate={{ y: 0 }}
-              // exit={{ y: "-120%" }}
-              // staggerDuration={0.025}
-              // splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={2000}
             />{" "}
@@ -42,10 +36,6 @@ const Footer = () => {
         </h2>
 
         <div className="flex flex-col md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
-          {/* <button className="flex whitespace-nowrap border border-white py-2 px-5 rounded-full transition">
-            Let&apos;s Talk 
-            <ArrowAngleRight/>
-          </button> */}
           <button
             className="flex items-center justify-center whitespace-nowrap text-lg border border-white py-2 px-4 rounded-full transition"
             onMouseEnter={() => setIsHovered(true)}
@@ -63,26 +53,26 @@ const Footer = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-12">
           <div>
-            <h3 className="text-sm text-gray-400 uppercase">
+            <h3 className="text-sm text-white font-bold uppercase">
               Join our socials
             </h3>
 
             <ul className="mt-3 space-y-2">
               <li className="flex items-center justify-center md:justify-start cursor-pointer group">
                 <LinkedInIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
-                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
+                <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   LinkedIn
                 </span>
               </li>
               <li className="flex items-center justify-center md:justify-start cursor-pointer group">
                 <FacebookIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
-                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
+                <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Facebook
                 </span>
               </li>
               <li className="flex items-center justify-center md:justify-start cursor-pointer group">
                 <InstaIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
-                <span className="text-2xl md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
+                <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Instagram
                 </span>
               </li>
@@ -90,19 +80,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm text-gray-400 uppercase">
+            <h3 className="text-sm text-white font-bold uppercase">
               Monday–Friday, 9AM–6PM
             </h3>
-            <p className=" font-bold text-2xl md:text-[26px] lg:text-[36px]">
+            <p className=" font-bold text-2xl text-white md:text-[26px] lg:text-[36px]">
               info@aventure.com
             </p>
-            <h3 className="mt-5 text-sm text-gray-400 uppercase">
+            <h3 className="mt-5 text-sm font-bold text-white uppercase">
               WE RESPOND WITHIN A FEW HOURS
             </h3>
-            <p className="text-2xl md:text-[26px] lg:text-[36px]">
+            <p className="text-2xl font-bold md:text-[26px] text-white lg:text-[36px]">
               +9411 234 5678
             </p>
-            <p className="mt-5 text-sm text-gray-400">
+            <p className="mt-5 text-sm font-bold text-white">
               3RD FLOOR, SOMANANDA RD, HORANA, SRI LANKA
             </p>
           </div>
@@ -116,12 +106,12 @@ const Footer = () => {
       <div className="mt-16 text-gray-500 text-sm border-t border-gray-700 pt-4">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 mt-2">
           <span>
-            <p>AVENTURE © 2025</p>
+            <p className="text-white font-bold">AVENTURE © 2025</p>
           </span>
-          <span className="cursor-pointer hover:text-white">
+          <span className="cursor-pointer text-white font-bold">
             PRIVACY POLICY
           </span>
-          <span className="cursor-pointer hover:text-white">
+          <span className="cursor-pointer text-white font-bold">
             COOKIES POLICY
           </span>
         </div>
