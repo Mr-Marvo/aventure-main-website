@@ -17,7 +17,7 @@ const ProjectPreview = () => {
         />
         <div className="absolute z-10 text-black text-left p-5 md:p-10">
           <div className="flex flex-col md:flex-row justify-between w-full items-center">
-            <p className="text-lg md:text-3xl lg:text-5xl font-extralight leading-normal">
+            <p className="text-lg md:text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal">
               Modern saas products and Mobile/web application design effective
               solutions that deliver results.
             </p>

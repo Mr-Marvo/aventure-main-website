@@ -67,17 +67,7 @@ const TestimonialSlider = () => {
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
               <div key={index} className="px-4">
-                {/* <FollowCursor
-                  offsetX={0}
-                  cardWidth="200px"
-                  rotationFactor={40}
-                  enableTilt={true}
-                  animationConfig={{ mass: 5, tension: 350, friction: 40 }}
-                  wheelConfig={{ mass: 1, tension: 200, friction: 30 }}
-                >
-                  {" "}
-                </FollowCursor> */}
-                <div className="bg-white shadow-lg p-6 rounded-lg text-center">
+                <div className="bg-white shadow-sm p-6 text-center">
                   <p className="text-gray-500 text-sm md:text-lg mb-4">
                     {item.text}
                   </p>
