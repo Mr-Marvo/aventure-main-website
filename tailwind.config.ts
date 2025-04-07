@@ -10,6 +10,9 @@ const config: Config = {
       colors: {
         buttonGreen: "var(--buttonGreen)",
       },
+      fontSize: {
+        fluid: "clamp(28px, 11.9vw, 200px)",
+      },
     },
   },
   plugins: [],

@@ -8,6 +8,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Baunk";
+  src: url("/font/Baunk.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -45,4 +52,16 @@ body {
 
 footer {
   font-family: "SF-Pro";
+}
+
+.text-fluid {
+  font-size: clamp(28px, 11.9vw, 200px);
+}
+
+.text-buttonGreen {
+  color: var(--buttonGreen);
+}
+
+.bg-buttonGreen {
+  background-color: var(--buttonGreen);
 }
