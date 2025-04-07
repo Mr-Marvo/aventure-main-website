@@ -8,16 +8,12 @@ import Slider from "../sections/Slider";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import PixelCard from "../components/animations/PixelCard";
+import FollowCursor from "../components/animations/FollowCursor";
 
 const CapabilityPage = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [lettersRef, setlettersRef] = useArrayRef<HTMLSpanElement>();
   const triggerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    setCursorPos({ x: e.clientX, y: e.clientY });
-  };
 
   const capabilities = [
     {
@@ -162,25 +158,21 @@ const CapabilityPage = () => {
               key={capability.id}
               className="flex flex-col lg:flex-row items-center justify-between hover:bg-black hover:text-white p-10 md:h-[411px]"
               onMouseEnter={() => setHoveredId(capability.id)}
-              onMouseMove={handleMouseMove}
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* ID Section */}
               <div className="w-1/3 text-5xl relative hidden lg:block">
                 {capability.id}-
                 {hoveredId === capability.id && (
-                  <div
-                    className="absolute right-0 bottom-0 top-20"
-                    style={{
-                      top: cursorPos.y - 310,
-                      left: cursorPos.x - 50,
-                    }}
+                  <FollowCursor
+                    offsetX={0}
+                    rotationFactor={40}
+                    enableTilt={true}
+                    animationConfig={{ mass: 5, tension: 350, friction: 40 }}
+                    wheelConfig={{ mass: 1, tension: 200, friction: 30 }}
                   >
-                    <button className="bg-[#73BA0D] text-white  px-5 py-2 rounded-full text-sm flex items-center gap-2 transition duration-300 z-10 whitespace-nowrap">
-                      View Portfolio
-                      <ArrowRight />
-                    </button>
-                  </div>
+                    {""}
+                  </FollowCursor>
                 )}
               </div>
 
