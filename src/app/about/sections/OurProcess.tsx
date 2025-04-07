@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import PixelCard from "@/app/components/animations/PixelCard";
 
 function OurProcess() {
   const sectionRef = useRef(null);
@@ -40,56 +41,87 @@ function OurProcess() {
       <div ref={triggerRef}>
         <div
           ref={sectionRef}
-          className="w-[2400px] h-[600px] py-20 flex flex-row relative"
+          className="w-[1500] md:w-[2400px] h-[400px] md:h-[600px] py-3 md:py-20 flex flex-row relative"
         >
           {/** Section 1 */}
-
-          <div className="h-[500px] w-[600px] border border-[#F4F4F4] flex justify-center items-center px-8">
-            <div className="max-w-md">
-              <p className="text-gray-500 text-lg mb-5">(01)</p>
-              <h2 className="text-4xl font-bold mb-5">STRUCTURE</h2>
-              <p className="text-gray-700 text-lg mt-2">
-                Designing intuitive user journeys and seamless interactions,
-                grounded in research and user insights.
-              </p>
+          <PixelCard variant="gray">
+            <div className="absolute">
+              <div className="h-[300px] md:h-[500px] w-[400px] md:w-[600px] border border-[#F4F4F4] flex justify-center items-center px-8">
+                <div className="">
+                  <p className="text-gray-500 text-sm md:text-[20px] mb-5">
+                    (01)
+                  </p>
+                  <h2 className="text-lg md:text-[40px] font-bold mb-5">
+                    STRUCTURE
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-[20px] mt-2">
+                    Designing intuitive user journeys and seamless interactions,
+                    grounded in research and user insights.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </PixelCard>
 
           {/** Section 2 */}
-          <div className="h-[500px] w-[600px] border border-[#F4F4F4]  flex justify-center items-center px-8">
-            <div className="max-w-md">
-              <p className="text-gray-500 text-lg mb-5">(02)</p>
-              <h2 className="text-4xl font-bold mb-5">STRATEGY</h2>
-              <p className="text-gray-700 text-lg mt-2">
-                Crafting purposeful design strategies that align with business
-                goals and enhance user experiences.
-              </p>
+          <PixelCard variant="gray">
+            <div className="absolute">
+              <div className="h-[300px] md:h-[500px] w-[400px] md:w-[600px] border border-[#F4F4F4] flex justify-center items-center px-8">
+                <div className="">
+                  <p className="text-gray-500 text-sm md:text-[20px] mb-5">
+                    (02)
+                  </p>
+                  <h2 className="text-lg md:text-[40px] font-bold mb-5">
+                    STRATEGY
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-[20px] mt-2">
+                    Crafting purposeful design strategies that align with
+                    business goals and enhance user experiences.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </PixelCard>
 
           {/** Section 3 */}
-          <div className="h-[500px] w-[600px] border border-[#F4F4F4]  flex justify-center items-center px-8">
-            <div className="max-w-md">
-              <p className="text-gray-500 text-lg mb-5">(03)</p>
-              <h2 className="text-4xl font-bold mb-5">DESIGN</h2>
-              <p className="text-gray-700 text-lg mt-2">
-                Translating ideas into visually appealing and functional
-                interfaces that users love.
-              </p>
+          <PixelCard variant="gray">
+            <div className="absolute">
+              <div className="h-[300px] md:h-[500px] w-[400px] md:w-[600px] border border-[#F4F4F4]  flex justify-center items-center px-8">
+                <div className="">
+                  <p className="text-gray-500 text-sm md:text-[20px] mb-5">
+                    (03)
+                  </p>
+                  <h2 className="text-lg md:text-[40px] font-bold mb-5">
+                    DESIGN
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-[20px] mt-2">
+                    Translating ideas into visually appealing and functional
+                    interfaces that users love.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </PixelCard>
 
           {/** Section 4 */}
-          <div className="h-[500px] w-[600px] border border-[#F4F4F4]  flex justify-center items-center px-8">
-            <div className="max-w-md">
-              <p className="text-gray-500 text-lg mb-5">(04)</p>
-              <h2 className="text-4xl font-bold mb-5">DEVELOPMENT</h2>
-              <p className="text-gray-700 text-lg mt-2">
-                Implementing scalable and high-performance solutions using the
-                latest technologies.
-              </p>
+          <PixelCard variant="gray">
+            <div className="absolute">
+              <div className="h-[300px] md:h-[500px] w-[400px] md:w-[600px] border border-[#F4F4F4]  flex justify-center items-center px-8">
+                <div className="">
+                  <p className="text-gray-500 text-sm md:text-[20px] mb-5">
+                    (04)
+                  </p>
+                  <h2 className="text-lg md:text-[40px] font-bold mb-5">
+                    DEVELOPMENT
+                  </h2>
+                  <p className="text-gray-700 text-sm md:text-[20px] mt-2">
+                    Implementing scalable and high-performance solutions using
+                    the latest technologies.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </PixelCard>
         </div>
       </div>
     </section>

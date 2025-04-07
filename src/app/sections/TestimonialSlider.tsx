@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 // Slick Carousel styles (Required)
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FollowCursor from "../components/animations/FollowCursor";
+// import FollowCursor from "../components/animations/FollowCursor";
 
 const testimonials = [
   {
@@ -56,7 +56,7 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <section className="bg-white h-screen flex items-start md:items-center py-16">
+    <section className="bg-white h-[500px] md:h-screen flex items-start md:items-center py-16">
       <div className="w-80 sm:w-2xl md:w-3xl lg:w-5xl xl:w-6xl mx-auto px-1 md:px-4">
         <h2 className="text-2xl md:text-4xl px-5 font-bold text-center md:text-right mb-8">
           Love from clients
@@ -67,7 +67,7 @@ const TestimonialSlider = () => {
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
               <div key={index} className="px-4">
-                <FollowCursor
+                {/* <FollowCursor
                   offsetX={0}
                   cardWidth="200px"
                   rotationFactor={40}
@@ -76,7 +76,7 @@ const TestimonialSlider = () => {
                   wheelConfig={{ mass: 1, tension: 200, friction: 30 }}
                 >
                   {" "}
-                </FollowCursor>
+                </FollowCursor> */}
                 <div className="bg-white shadow-lg p-6 rounded-lg text-center">
                   <p className="text-gray-500 text-sm md:text-lg mb-4">
                     {item.text}

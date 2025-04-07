@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { LuArrowUpRight } from "react-icons/lu";
 import { useRouter } from "next/navigation";
+import ArrowWithCircle from "../assets/svgs/ArrowWithCircle";
 
 const services = [
   {
@@ -16,9 +17,11 @@ const services = [
   },
   {
     title: "Web Solutions",
-    description: "Mobile friendly custom design including UI-UX things.",
-    highlight: "Mobile friendly custom design including UI-UX things.",
+    description:
+      "Mobile friendly custom design including UI-UX things.Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+    highlight: "Mobile friendly custom design.",
     id: 2,
+    isDefault: true, // Default hovered state
   },
 ];
 const services2 = [
@@ -28,6 +31,7 @@ const services2 = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     highlight: "Android & IOS Devices",
     id: 3,
+    isDefault: true, // Default hovered state
   },
   {
     title: "Tech Experts",
@@ -42,6 +46,10 @@ function ServicesSection() {
   const [lettersRef, setlettersRef] = useArrayRef<HTMLSpanElement>();
   const [hoveredId, setHoveredId] = useState<number | null>(2);
   const [hovered2Id, setHovered2Id] = useState<number | null>(3);
+
+  // Check if any row is hovered separately
+  const isFirstRowHovered = hoveredId !== null;
+  const isSecondRowHovered = hovered2Id !== null;
 
   const router = useRouter();
 
@@ -74,8 +82,8 @@ function ServicesSection() {
         end: "bottom 85%",
       },
       color: "#ffffff",
-      duration: 1,
-      stagger: 1,
+      duration: 5,
+      stagger: 5,
     });
 
     return () => {
@@ -93,7 +101,7 @@ function ServicesSection() {
         <div ref={triggerRef}>
           {text.split("").map((letter, index) => (
             <span
-              className="text-2xl md:text-4xl leading-12 md:leading-20 font-bold text-black-500 drop-shadow-lg"
+              className="text-2xl md:text-4xl xl:text-[40px] leading-12 md:leading-20 font-bold text-black-500 drop-shadow-lg"
               key={index}
               ref={setlettersRef}
             >
@@ -102,67 +110,99 @@ function ServicesSection() {
           ))}
         </div>
       </div>
-      <div className="bg-black text-white p-4 md:p-10 md:px-10 lg:px-20">
+      <div className="bg-black text-white p-4 md:p-14 md:px-10 lg:px-20">
         {/* First Row of Services */}
         <div className="mt-1 flex flex-col md:flex-row gap-4 md:gap-2">
-          {services.map((service) => (
-            <div
-              key={service.id}
-              onMouseEnter={() => setHoveredId(service.id)}
-              onMouseLeave={() => setHoveredId(2)}
-              onClick={() => router.push("/capabilities")}
-              className={`
-                relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
-                ${
-                  hoveredId === service.id
-                    ? "w-full md:w-[60%] h-[250px]"
-                    : hoveredId !== null
-                    ? "w-full md:w-[40%]"
-                    : "w-full md:w-[40%]"
-                }
-              `}
-            >
-              <h3 className="text-lg font-semibold">{service.title}</h3>
-              {service.highlight && (
-                <p className="font-bold mt-2">{service.highlight}</p>
-              )}
-              <p className="text-sm mt-2">{service.description}</p>
-              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-5 w-14 h-14 flex items-center justify-center">
-                <LuArrowUpRight size={24} />
+          {services.map((service) => {
+            const isHovered =
+              hoveredId === service.id ||
+              (!isFirstRowHovered && service.isDefault);
+
+            return (
+              <div
+                key={service.id}
+                onMouseEnter={() => setHoveredId(service.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                onClick={() => router.push("/capabilities")}
+                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
+                         ${
+                           isHovered
+                             ? "w-full md:w-[60%] h-[280px]"
+                             : "w-full md:w-[40%]"
+                         }`}
+              >
+                <h3 className="text-sm lg:text-lg xl:text-4xl font-semibold">
+                  {service.title}
+                </h3>
+                <div
+                  className={`transition-all duration-300 ease-in-out ${
+                    isHovered
+                      ? "flex flex-col md:flex-row justify-between gap-3 md:gap-10"
+                      : "flex flex-col"
+                  }`}
+                >
+                  {isHovered && (
+                    <p className="font-bold text-sm lg:text-lg xl:text-[24px]">
+                      {service.highlight}
+                    </p>
+                  )}
+                  <p className="text-sm xl:text-[16px]">
+                    {service.description}
+                  </p>
+                </div>
+                <div className="absolute top-9 right-9 w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
+                  <ArrowWithCircle size={24} />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Second Row of Services */}
         <div className="mt-4 md:mt-2 flex flex-col md:flex-row gap-4 md:gap-2">
-          {services2.map((service2) => (
-            <div
-              key={service2.id}
-              onMouseEnter={() => setHovered2Id(service2.id)}
-              onMouseLeave={() => setHovered2Id(3)}
-              onClick={() => router.push("/capabilities")}
-              className={`
-                relative transition-all duration-300 ease-in-out rounded-4xl p-10 border border-white bg-white text-black flex flex-col justify-between
-                ${
-                  hovered2Id === service2.id
-                    ? "w-full md:w-[60%] h-[250px]"
-                    : hovered2Id !== null
-                    ? "w-full md:w-[40%]"
-                    : "w-full md:w-[45%]"
-                }
-              `}
-            >
-              <h3 className="text-lg font-semibold">{service2.title}</h3>
-              {service2.highlight && (
-                <p className="font-bold mt-2">{service2.highlight}</p>
-              )}
-              <p className="text-sm mt-2">{service2.description}</p>
-              <div className="absolute top-4 right-4 text-black border border-black rounded-full p-5 w-14 h-14 flex items-center justify-center">
-                <LuArrowUpRight size={24} />
+          {services2.map((service2) => {
+            const isHovered =
+              hovered2Id === service2.id ||
+              (!isSecondRowHovered && service2.isDefault);
+
+            return (
+              <div
+                key={service2.id}
+                onMouseEnter={() => setHovered2Id(service2.id)}
+                onMouseLeave={() => setHovered2Id(null)}
+                onClick={() => router.push("/capabilities")}
+                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
+                         ${
+                           isHovered
+                             ? "w-full md:w-[60%] h-[280px]"
+                             : "w-full md:w-[40%]"
+                         }`}
+              >
+                <h3 className="text-sm lg:text-lg xl:text-4xl font-semibold">
+                  {service2.title}
+                </h3>
+                <div
+                  className={`transition-all duration-300 ease-in-out ${
+                    isHovered
+                      ? "flex flex-col md:flex-row justify-between gap-3 md:gap-10"
+                      : "flex flex-col"
+                  }`}
+                >
+                  {isHovered && (
+                    <p className="font-bold text-sm lg:text-lg xl:text-[24px]">
+                      {service2.highlight}
+                    </p>
+                  )}
+                  <p className="text-sm xl:text-[16px]">
+                    {service2.description}
+                  </p>
+                </div>
+                <div className="absolute top-9 right-9 w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
+                  <ArrowWithCircle size={24} />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       <div className="h-[10vh]"></div>

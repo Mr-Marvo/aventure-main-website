@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "SF Pro";
-  src: url("/font/SF-Pro.ttf") format("opentype");
+  font-family: "SF-Pro";
+  src: url("/font/SF-Pro.ttf") format("truetype");
+
+  font-weight: 100;
   font-style: normal;
 }
-
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --buttonGreen:#73BA0D;
+  --buttonGreen: #73ba0d;
 }
 
-.bg-square-pattern {
+/* .bg-square-pattern {
   background-image: linear-gradient(
       45deg,
       #cd3030 25%,
@@ -32,11 +33,16 @@
     );
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: "SF Pro";
+  /* font-family: SF-Pro, Helvetica, sans-serif; */
+  /* font-family: "SF-Pro"; */
+  font-family: "SF-Pro";
+}
+
+footer {
+  font-family: "SF-Pro";
 }

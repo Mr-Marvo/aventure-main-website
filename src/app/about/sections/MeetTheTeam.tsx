@@ -10,25 +10,25 @@ const teamMembers = [
     name: "Oleksandr Strukov",
     role: "CEO",
     image: "/Photo by Vasile Stancu.png",
-    style: "top-0 left-130",
+    style: "md:top-0 md:left-130 top-[10%] left-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "UI/UX Lead",
     image: "/Photo by Hadi Yazdi Aznaveh.png",
-    style: "top-20 right-1/4",
+    style: "md:top-20 md:right-1/4 top-[30%] right-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "QA Lead",
     image: "/Photo by Vasile Stancu (1).png",
-    style: "bottom-2/4 left-1/4",
+    style: "md:bottom-2/4 md:left-1/4 bottom-[30%] left-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "Backend Dev.",
     image: "/Image Placeholder.png",
-    style: "bottom-100 right-150",
+    style: "md:bottom-100 md:right-150 bottom-[10%] right-[5%]",
   },
 ];
 
@@ -63,37 +63,39 @@ const MeetTheTeam = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[1000px] flex flex-col items-center justify-start">
+    <div className="relative w-full h-[1000px] md:h-[1250px] flex flex-col items-center justify-start">
       <div className="relative w-full h-[100vh]" ref={triggerRef}>
         {/* Fixed Section within the Section */}
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-white flex flex-col z-10 px-10 py-10 justify-start">
-          <h2 className="text-lg text-gray-500 uppercase">Our Team</h2>
-          <h1 className="text-5xl mt-2 text-left">
-            Meet the people behind <br /> the magic
+        <div className="absolute top-0 left-0 w-full h-1/3 bg-white flex flex-col z-10 px-5 md:px-10 py-5 md:py-10 justify-start">
+          <h2 className="text-sm md:text-lg text-gray-500 uppercase">
+            Our Team
+          </h2>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[80px] md:leading-20 mt-2 text-left">
+            Meet the people behind <br className="hidden sm:block" /> the magic
           </h1>
-          <p className="text-gray-600 text-xl mt-4 pb-20 text-left">
+          <p className="text-gray-600 text-[24px] mt-4 pb-20 text-left">
             Together, our team combines expertise, creativity, and passion to
             deliver outstanding <br /> results for our clients.
           </p>
         </div>
 
         {/* Transparent Scrolling Section */}
-        <div className="relative w-full h-[1000px] pb-96 z-50 mt-10 pt-56">
+        <div className="relative w-full h-[1000px] md:h-[1000px] pb-40 z-50 mt-10 pt-80 md:pt-96">
           <div
             ref={sectionRef}
-            className="relative w-full h-[150vh] flex flex-col items-center"
+            className="relative w-full h-[120vh] md:h-[150vh] flex flex-col items-center"
           >
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className={`absolute ${member.style} flex flex-col items-center text-center`}
+                className={`absolute ${member.style} flex flex-col items-center text-center w-[120px] md:w-[150px]`}
               >
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={150}
-                  height={150}
-                  className="rounded-lg shadow-lg"
+                  width={160}
+                  height={160}
+                  className="rounded-lg shadow-lg w-full h-auto"
                 />
                 <p className="font-semibold mt-2">{member.name}</p>
                 <p className="text-sm text-gray-500">{member.role}</p>
