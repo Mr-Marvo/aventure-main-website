@@ -93,7 +93,7 @@ const Gallery: React.FC = () => {
         {filteredItems.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-3xl shadow-lg overflow-hidden"
+            className="bg-white rounded-3xl overflow-hidden"
             onClick={() => router.push(`/project-preview`)}
           >
             <div className="relative w-full h-96 overflow-hidden">
