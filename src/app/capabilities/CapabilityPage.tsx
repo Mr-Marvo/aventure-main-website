@@ -180,7 +180,7 @@ const CapabilityPage = () => {
                 {capability.title}
               </div>
 
-              <div className="w-full lg:w-1/4  font-extralight text-base hover:text-white">
+              <div className="w-full lg:w-1/4  font-extralight text-base hover:text-white mt-3 md:mt-0">
                 {capability.description}
               </div>
 
@@ -219,11 +219,11 @@ const CapabilityPage = () => {
 
       {/* grid */}
       <section className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-2 md:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {items.map((item, index) => (
             <PixelCard variant="gray" key={index}>
               <div key={index} className="absolute">
-                <div className="text-start px-10 md:px-20">
+                <div className="text-start px-10 md:px-20 h-full">
                   <div className="text-xs md:text-sm mb-5">{item.icon}</div>
                   <h3 className="text-2xl md:text-4xl font-bold mb-5">{item.title}</h3>
                   <p className="text-gray-600 text-md md:text-xl">{item.description}</p>

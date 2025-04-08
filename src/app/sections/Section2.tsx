@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import RoundImage from "../assets/Section2/RoundImage";
 import DecryptedText from "../components/animations/DecryptedText";
+import VideoSection from "./VideoSection";
 
 const Section2 = ({ id }: { id: string }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -43,66 +44,80 @@ const Section2 = ({ id }: { id: string }) => {
     });
   }, [mousePosition, isHovering]);
 
+
+  const handleScrollClick = () => {
+    const videoSection = document.getElementById("videoSection");
+    if (videoSection) {      
+      videoSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section
-      ref={sectionRef}
-      id={id}
-      className="relative w-full h-[500px] md:h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      {/* Background Image */}
-      <div className="absolute inset-0 top-20 md:top-44 left-0 md:left-[600px]">
-        <div className="relative w-full h-full">
-          <Image
-            src="/Glass.png"
-            fill
-            alt="Glass background"
-            className="object-cover"
-          />
-        </div>
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-10 w-full mx-auto">
-        {/* Main Heading */}
-        <div onMouseEnter={() => setIsHovering(true)}>
-          <DecryptedText
-            text="Empowering enterprises with cutting-edge solutions"
-            speed={90}
-            maxIterations={30}
-            animateOn="view"
-            revealDirection="center"
-            sequential={true}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[120px] font-normal mb-6 md:mb-8"
-          />
-        </div>
-
-        {/* Subheading & Round Image */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-44 pt-6 md:pt-12">
-          {/* Round Image with Strong Magnet Effect */}
-          <div
-            ref={imageRef}
-            className="hidden md:block w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 transition-transform duration-100 ease-linear pointer-events-none"
-            style={{
-              transform: `translate(${imagePosition.x}px, ${imagePosition.y}px)`,
-              willChange: "transform",
-            }}
-          >
-            <RoundImage />
+    <>
+      <section
+        ref={sectionRef}
+        id={id}
+        className="relative w-full h-[500px] md:h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {/* Background Image */}
+        <div className="absolute inset-0 top-20 md:top-44 left-0 md:left-[600px]">
+          <div className="relative w-full h-full">
+            <Image
+              src="/Glass.png"
+              fill
+              alt="Glass background"
+              className="object-cover"
+            />
           </div>
+        </div>
 
-          {/* Text */}
+        {/* Content Container */}
+        <div className="relative z-10 w-full mx-auto">
+          {/* Main Heading */}
           <div onMouseEnter={() => setIsHovering(true)}>
-            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center md:text-right text-gray-400 mb-6 md:mb-12 px-4 md:px-11">
-              AI-driven innovation, and transformative technology to enhance
-              efficiency, drive growth, optimise operations, and unlock new
-              opportunities in the ever-evolving digital landscape.
-            </h3>
+            <DecryptedText
+              text="Empowering enterprises with cutting-edge solutions"
+              speed={90}
+              maxIterations={30}
+              animateOn="view"
+              revealDirection="center"
+              sequential={true}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[120px] font-normal mb-6 md:mb-8"
+            />
+          </div>
+
+          {/* Subheading & Round Image */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-44 pt-6 md:pt-12">
+            {/* Round Image with Strong Magnet Effect */}
+            <div
+              ref={imageRef}
+              className="hidden md:block  w-20 h-20 md:w-52 md:h-52 transition-transform duration-100 ease-linear cursor-pointer"
+              style={{
+                transform: `translate(${imagePosition.x}px, ${imagePosition.y}px)`,
+                willChange: "transform",
+              }}
+              onClick={handleScrollClick}
+            >
+              <RoundImage className="w-full h-full"/>
+            </div>
+
+            {/* Text */}
+            <div onMouseEnter={() => setIsHovering(true)}>
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center md:text-right text-gray-400 mb-6 md:mb-12 px-4 md:px-11">
+                AI-driven innovation, and transformative technology to enhance
+                efficiency, drive growth, optimise operations, and unlock new
+                opportunities in the ever-evolving digital landscape.
+              </h3>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* section 3 */}
+      <VideoSection id="videoSection" />
+    </>
   );
 };
 
