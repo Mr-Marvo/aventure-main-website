@@ -25,13 +25,19 @@ const MainNavbar2 = () => {
         <div className="absolute top-16 right-5 w-48 bg-white shadow-lg rounded-lg">
           <ul className="py-2 text-black">
             <Link href="/portfolio" onClick={() => setIsOpen(false)}>
-              <li className="px-4 py-3 hover:bg-gray-200">Portfolio</li>
+              <li className="px-4 py-3 font-semibold hover:bg-gray-200">
+                Portfolio
+              </li>
             </Link>
             <Link href="/about" onClick={() => setIsOpen(false)}>
-              <li className="px-4 py-3 hover:bg-gray-200">About</li>
+              <li className="px-4 py-3 font-semibold hover:bg-gray-200">
+                About
+              </li>
             </Link>
             <Link href="/capabilities" onClick={() => setIsOpen(false)}>
-              <li className="px-4 py-3 hover:bg-gray-200">Services</li>
+              <li className="px-4 py-3 font-semibold hover:bg-gray-200">
+                Services
+              </li>
             </Link>
           </ul>
         </div>

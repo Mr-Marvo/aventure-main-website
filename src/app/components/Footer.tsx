@@ -1,23 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
-import AventureLogoBig from "../assets/AventureLogoBig";
+// import AventureLogoBig from "../assets/AventureLogoBig";
 import RotatingText from "./animations/RotatingText";
 import LinkedInIcon from "../assets/svgs/LinkedInIcon";
 import FacebookIcon from "../assets/svgs/FacebookIcon";
 import InstaIcon from "../assets/svgs/InstaIcon";
 import ArrowRight from "../assets/svgs/ArrowRight";
 import ArrowAngleRightWhite from "../assets/svgs/ArrowAngleRightWhite";
+import localFont from "next/font/local";
+
+const baunkFont = localFont({
+  src: "../font/Baunk.ttf",
+});
 
 const Footer = () => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <footer className="bg-black text-white px-10 py-16 font-sans">
-      <div className="mx-auto text-center md:text-left">
-        <h2 className="text-4xl md:text-[50px] lg:text-[70px] xl:text-[120px] font-extralight">
+    <footer className="bg-black text-white flex overflow-hidden py-16">
+      <div className=" text-center md:text-left">
+        <h2 className="text-4xl px-10 md:text-[50px] lg:text-[70px] xl:text-[120px] font-extralight">
           We’re always on the lookout <br />
           for next
-          <span className="text-[#73ba0d] font-bold">
+          <span className="text-buttonGreen font-bold">
             {" "}
             →{" "}
             <RotatingText
@@ -28,14 +33,14 @@ const Footer = () => {
                 "application.",
                 "growth.",
               ]}
-              mainClassName="text-[#73ba0d] inline-block ml-2"
+              mainClassName="text-buttonGreen inline-block ml-2"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
               rotationInterval={2000}
             />{" "}
           </span>
         </h2>
 
-        <div className="flex flex-col md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
+        <div className="flex flex-col px-10 md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
           <button
             className="flex items-center justify-center whitespace-nowrap text-lg border border-white py-2 px-4 rounded-full transition"
             onMouseEnter={() => setIsHovered(true)}
@@ -51,7 +56,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-12">
+        <div className="grid grid-cols-1 px-10 md:grid-cols-2 lg:grid-cols-3 gap-16 mt-12">
           <div>
             <h3 className="text-sm text-white font-bold uppercase">
               Join our socials
@@ -98,22 +103,24 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-5 flex justify-center md:justify-start sm:mt-10 md:mt-16 lg:mt-20">
-          <AventureLogoBig className="w-[250px] sm:w-[400px] md:w-[650px] lg:w-[900px] xl:w-[1280px]" />
+        <div
+          className={`flex mt-5 justify-center md:justify-start sm:mt-10 md:mt-16 lg:mt-20 text-fluid text-buttonGreen ${baunkFont.className}`}
+        >
+          <span>AV</span>
+          <span className="text-white">ENTURE</span>
         </div>
-      </div>
-
-      <div className="mt-16 text-gray-500 text-sm border-t border-gray-700 pt-4">
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 mt-2">
-          <span>
-            <p className="text-white font-bold">AVENTURE © 2025</p>
-          </span>
-          <span className="cursor-pointer text-white font-bold">
-            PRIVACY POLICY
-          </span>
-          <span className="cursor-pointer text-white font-bold">
-            COOKIES POLICY
-          </span>
+        <div className="mt-16 px-10 text-gray-500 text-sm border-t border-gray-700 pt-4">
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 mt-2">
+            <span>
+              <p className="text-white font-bold">AVENTURE © 2025</p>
+            </span>
+            <span className="cursor-pointer text-white font-bold">
+              PRIVACY POLICY
+            </span>
+            <span className="cursor-pointer text-white font-bold">
+              COOKIES POLICY
+            </span>
+          </div>
         </div>
       </div>
     </footer>

@@ -10,25 +10,28 @@ const teamMembers = [
     name: "Oleksandr Strukov",
     role: "CEO",
     image: "/Photo by Vasile Stancu.png",
-    style: "md:top-0 md:left-130 top-[10%] left-[5%]",
+    style:
+      "md:top-0 md:left-50 lg:top-0 lg:left-70 xl:top-0 xl:left-110 top-[10%] left-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "UI/UX Lead",
     image: "/Photo by Hadi Yazdi Aznaveh.png",
-    style: "md:top-20 md:right-1/4 top-[30%] right-[5%]",
+    style: "md:top-40 md:right-30 lg:top-20 lg:right-1/4 top-[30%] right-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "QA Lead",
     image: "/Photo by Vasile Stancu (1).png",
-    style: "md:bottom-2/4 md:left-1/4 bottom-[30%] left-[5%]",
+    style:
+      "xl:bottom-2/4 xl:left-80 xl:top-120 lg:top-80 lg:left-50 md:top-60 md:left-30 bottom-[30%] left-[5%]",
   },
   {
     name: "Oleksandr Strukov",
     role: "Backend Dev.",
     image: "/Image Placeholder.png",
-    style: "md:bottom-100 md:right-150 bottom-[10%] right-[5%]",
+    style:
+      "xl:bottom-100 xl:right-130 xl:top-160 lg:top-120 lg:right-80 md:top-100 md:right-60 bottom-[10%] right-[5%]",
   },
 ];
 
@@ -88,14 +91,14 @@ const MeetTheTeam = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className={`absolute ${member.style} flex flex-col items-center text-center w-[120px] md:w-[150px]`}
+                className={`absolute ${member.style} flex flex-col items-center text-center `}
               >
                 <Image
                   src={member.image}
                   alt={member.name}
                   width={160}
                   height={160}
-                  className="rounded-lg shadow-lg w-full h-auto"
+                  className="rounded-lg shadow-lg w-[100px] h-[100px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] xl:w-[200px] xl:h-[200px]"
                 />
                 <p className="font-semibold mt-2">{member.name}</p>
                 <p className="text-sm text-gray-500">{member.role}</p>

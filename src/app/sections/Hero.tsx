@@ -77,16 +77,16 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Animated AVENTURE Text */}
-        <div className="absolute bottom-10 sm:bottom-20 left-2 sm:left-5">
-          <div className="">
-            <div ref={triggerRef} className="flex space-x-1 sm:space-x-2">
+        <div className="absolute bottom-10">
+          <div>
+            <div ref={triggerRef}>
               {text.split("").map((letter, index) => (
                 <span
                   key={index}
                   ref={(el) => {
                     if (el) lettersRef.current[index] = el;
                   }}
-                  className={`text-3xl sm:text-6xl md:text-[70px] lg:text-[100px] xl:text-[170px] 3xl:text-[210px] text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+                  className={`text-fluid text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
                 >
                   {letter}
                 </span>

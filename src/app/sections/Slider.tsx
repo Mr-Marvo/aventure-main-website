@@ -126,7 +126,7 @@ const Slider = () => {
                 {/* Centered arrow */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
                   <Link href="/portfolio">
-                    <button className="text-white p-7 rounded-full bg-[#73ba0d] transition-all">
+                    <button className="text-white p-7 rounded-full bg-buttonGreen transition-all">
                       <FaArrowRight size={20} />
                     </button>
                   </Link>

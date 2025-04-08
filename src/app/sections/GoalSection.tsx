@@ -18,7 +18,7 @@ const GoalSection = () => {
       <div className="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row md:justify-between items-center py-10 md:py-0">
         {/* Left Side: Main Heading */}
         <div className="w-full md:w-1/2 text-white px-4 sm:px-8 md:px-12 xl:px-20">
-          <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-[50px] xl:text-[60px] font-normal leading-tight">
+          <h1 className="text-3xl sm:text-3xl font-semibold md:text-4xl lg:text-[50px] xl:text-[60px] leading-tight">
             Empowering <br /> you with the <br />
             <span className="font-semibold">resources and </span> <br />
             support to <br />
@@ -29,7 +29,7 @@ const GoalSection = () => {
         </div>
 
         {/* Right Side: Description */}
-        <div className="w-full md:w-1/2 text-gray-300 mt-8 md:mt-0 text-sm md:text-base lg:text-lg xl:text-xl px-4 sm:px-8 md:px-8 lg:px-10 xl:px-20 leading-relaxed">
+        <div className="w-full md:w-1/2 text-white mt-8 md:mt-0 text-sm md:text-base lg:text-lg xl:text-xl px-4 sm:px-8 md:px-8 lg:px-10 xl:px-20 leading-relaxed">
           <p>
             At our software service company, we specialize in crafting
             international-standard enterprise-level applications that drive
@@ -38,7 +38,7 @@ const GoalSection = () => {
             meet the ever-changing demands of your business.
           </p>
           <br />
-          <p>
+          <p className="text-gray-400">
             Our consultancy-level outsourcing combines expert guidance with
             innovative strategies, empowering your technology initiatives to
             thrive. With our flexible rates and a dynamic, accessible team, we
