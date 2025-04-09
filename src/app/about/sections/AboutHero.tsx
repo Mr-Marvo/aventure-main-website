@@ -57,11 +57,18 @@ const AboutHero = () => {
     });
   }, [mousePosition, isHovering]);
 
+  const handleScrollClick = () => {
+    const aboutSection2 = document.getElementById("aboutSection2");
+    if (aboutSection2) {      
+      aboutSection2.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex flex-col items-center w-full">
       {/* Squares section with hover detection */}
       <section
-        className="relative w-full h-[70vh] md:h-screen flex items-center bg-white overflow-hidden"
+        className="relative w-full h-[90vh] flex items-center bg-white overflow-hidden"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
@@ -88,7 +95,9 @@ const AboutHero = () => {
         {/* Round Image with strong magnet effect */}
         <div
           ref={imageRef}
-          className="hidden md:block absolute -bottom-10 right-0 w-32 h-32 md:w-48 md:h-48 lg:w-48 lg:h-48 pointer-events-none"
+          className="hidden md:block absolute -bottom-10 right-0 w-20 h-20 md:w-28 md:h-28 cursor-pointer"
+          onClick={handleScrollClick}
+
         >
           <motion.div
             style={{
@@ -97,13 +106,13 @@ const AboutHero = () => {
               willChange: "transform",
             }}
           >
-            <RoundImage />
+            <RoundImage className="w-full h-full" />
           </motion.div>
         </div>
       </section>
 
       {/* About section */}
-      <div>
+      <div id="aboutSection2">
         <div className="w-full flex h-[600px] justify-between gap-5 bg-black py-10 px-10">
           <div className="relative w-full">
             <h2 className="text-lg text-gray-400 md:text-xl mb-5 md:mb-10">

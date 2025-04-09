@@ -96,12 +96,12 @@ function ServicesSection() {
       <div className="h-[10vh]"></div>
       <div className="px-4 md:pl-20 md:pr-[7%]">
         <h2 className="text-base uppercase text-gray-300 tracking-wide">
-          Services
+        Capabilities
         </h2>
-        <div ref={triggerRef}>
+        <div ref={triggerRef} className="mt-3 w-full lg:w-3/4">
           {text.split("").map((letter, index) => (
             <span
-              className="text-2xl md:text-4xl xl:text-[40px] leading-12 md:leading-20 font-bold text-black-500 drop-shadow-lg"
+              className="text-2xl md:text-4xl xl:text-[40px] leading-8 md:leading-12 font-extrabold text-black-500 drop-shadow-lg"
               key={index}
               ref={setlettersRef}
             >

@@ -11,7 +11,7 @@ const HeroPortfolio: React.FC = () => {
         borderColor="#333333"
         hoverFillColor="#222"
       />
-      <div className="absolute z-10 text-white text-left p-10">
+      <div className="absolute z-10 text-white text-left p-10 mt-8">
         <div className="flex justify-between w-full items-center">
           <p className="text-3xl md:text-5xl font-extralight leading-14">
             Modern saas products and Mobile/web application design effective
@@ -19,7 +19,12 @@ const HeroPortfolio: React.FC = () => {
           </p>
           <div className="w-[70%] hidden md:block"></div>
         </div>
+
+        <div className="flex justify-end w-full items-end mt-28">
+        <p className="text-white text-xl">Some of our case <br /> studies you can view.</p>
+      </div> 
       </div>
+
     </section>
   );
 };

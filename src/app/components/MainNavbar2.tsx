@@ -15,10 +15,10 @@ const MainNavbar2 = () => {
       </Link>
 
       <button
-        className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-black hover:bg-black/70 rounded-full text-white"
+        className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-black hover:bg-black/70 rounded-full text-white"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? "✖" : <MenuIcon color="white" />}
+        {isOpen ? "✖" : <MenuIcon color="white" className="w-8 h-8 md:w-12 md:h-12"/>}
       </button>
 
       {isOpen && (

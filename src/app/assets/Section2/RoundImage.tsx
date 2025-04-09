@@ -1,6 +1,6 @@
 import React from "react";
 
-const RoundImage = () => {
+const RoundImage = ({...props}) => {
   return (
     <svg
       width="120"
@@ -8,6 +8,7 @@ const RoundImage = () => {
       viewBox="0 0 120 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <rect width="120" height="120" rx="60" fill="#010202" />
       <path

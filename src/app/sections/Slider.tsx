@@ -111,7 +111,7 @@ const Slider = () => {
           {sliderData.map((item, id) => (
             <div
               key={id}
-              className="flex flex-col w-[280px] md:w-[400px] lg:w-[520px] flex-shrink-0 rounded-3xl overflow-hidden relative bg-white shadow-lg"
+              className="flex flex-col w-[280px] md:w-[400px] lg:w-[520px] flex-shrink-0 rounded-3xl overflow-hidden relative bg-white "
             >
               <div
                 className="relative overflow-hidden group"
