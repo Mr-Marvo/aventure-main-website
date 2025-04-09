@@ -70,15 +70,15 @@ const MeetTheTeam = () => {
       <div className="relative w-full h-[100vh]" ref={triggerRef}>
         {/* Fixed Section within the Section */}
         <div className="absolute top-0 left-0 w-full h-1/3 bg-white flex flex-col z-10 px-5 md:px-10 py-5 md:py-10 justify-start">
-          <h2 className="text-sm md:text-lg text-gray-500 uppercase">
+          <h2 className="text-sm md:text-lg text-gray-500 font-bold uppercase">
             Our Team
           </h2>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[80px] md:leading-20 mt-2 text-left">
+          <h1 className="text-4xl lg:text-5xl xl:text-[80px] lg:leading-20 mt-2 text-left font-semibold">
             Meet the people behind <br className="hidden sm:block" /> the magic
           </h1>
-          <p className="text-gray-600 text-[24px] mt-4 pb-20 text-left">
+          <p className="text-gray-600 text-[24px] mt-4 pb-20 text-left shrink-0">
             Together, our team combines expertise, creativity, and passion to
-            deliver outstanding <br /> results for our clients.
+            deliver outstanding results for our clients.
           </p>
         </div>
 

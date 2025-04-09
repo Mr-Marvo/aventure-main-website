@@ -128,9 +128,9 @@ function OurProcess() {
       {/** Mobile Section 1 */}
       <div className="md:hidden mt-20 md:mt-0">
         <div className="w-full h-[300px] border border-[#F4F4F4] flex flex-col justify-center items-center py-5 px-5">
-          <p className="text-gray-500 text-sm mb-5">(01)</p>
-          <h2 className="text-lg font-bold mb-5">STRUCTURE</h2>
-          <p className="text-gray-700 text-sm text-center">
+          <p className="text-gray-500 text-lg mb-5">(01)</p>
+          <h2 className="text-xl font-bold mb-5">STRUCTURE</h2>
+          <p className="text-gray-700 text-md text-center">
             Designing intuitive user journeys and seamless interactions,
             grounded in research and user insights.
           </p>
@@ -140,9 +140,9 @@ function OurProcess() {
       {/** Mobile Section 2 */}
       <div className="md:hidden">
         <div className="w-full h-[300px] border border-[#F4F4F4] flex flex-col justify-center items-center py-5 px-5">
-          <p className="text-gray-500 text-sm mb-5">(02)</p>
-          <h2 className="text-lg font-bold mb-5">STRATEGY</h2>
-          <p className="text-gray-700 text-sm text-center">
+          <p className="text-gray-500 text-lg mb-5">(02)</p>
+          <h2 className="text-xl font-bold mb-5">STRATEGY</h2>
+          <p className="text-gray-700 text-md text-center">
             Crafting purposeful design strategies that align with business goals
             and enhance user experiences.
           </p>
@@ -152,9 +152,9 @@ function OurProcess() {
       {/** Mobile Section 3 */}
       <div className="md:hidden">
         <div className="w-full h-[300px] border border-[#F4F4F4] flex flex-col justify-center items-center py-5 px-5">
-          <p className="text-gray-500 text-sm mb-5">(03)</p>
-          <h2 className="text-lg font-bold mb-5">DESIGN</h2>
-          <p className="text-gray-700 text-sm text-center">
+          <p className="text-gray-500 text-lg mb-5">(03)</p>
+          <h2 className="text-xl font-bold mb-5">DESIGN</h2>
+          <p className="text-gray-700 text-md text-center">
             Translating ideas into visually appealing and functional interfaces
             that users love.
           </p>
@@ -164,9 +164,9 @@ function OurProcess() {
       {/** Mobile Section 4 */}
       <div className="md:hidden">
         <div className="w-full h-[300px] border border-[#F4F4F4] flex flex-col justify-center items-center py-5 px-5">
-          <p className="text-gray-500 text-sm mb-5">(04)</p>
-          <h2 className="text-lg font-bold mb-5">DEVELOPMENT</h2>
-          <p className="text-gray-700 text-sm text-center">
+          <p className="text-gray-500 text-lg mb-5">(04)</p>
+          <h2 className="text-xl font-bold mb-5">DEVELOPMENT</h2>
+          <p className="text-gray-700 text-md text-center">
             Implementing scalable and high-performance solutions using the
             latest technologies.
           </p>
