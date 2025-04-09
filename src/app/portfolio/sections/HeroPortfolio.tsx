@@ -13,7 +13,7 @@ const HeroPortfolio: React.FC = () => {
       />
       <div className="absolute z-10 text-white text-left p-10">
         <div className="flex justify-between w-full items-center">
-          <p className="text-2xl md:text-5xl font-extralight leading-14">
+          <p className="text-3xl md:text-5xl font-extralight leading-14">
             Modern saas products and Mobile/web application design effective
             solutions that deliver results.
           </p>
