@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import PixelCard from "../components/animations/PixelCard";
 import FollowCursor from "../components/animations/FollowCursor";
+import BookNow from "./BookNow";
 
 const CapabilityPage = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -129,24 +130,27 @@ const CapabilityPage = () => {
           hoverFillColor="#F1F1F1"
         />
 
-        <div className="absolute z-10 text-black text-left p-5 md:p-10 w-full">
-          <div className="flex flex-col justify-start w-full items-start">
-            <p className="text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal pl-5 sm:pl-10 md:pl-20 lg:pl-20 xl:pl-40">
-              We provide innovative, tailored IT solutions
+        <div className="absolute z-10 text-black w-full p-5 md:p-20">
+          <div className="flex flex-col justify-center w-full items-start">
+            <p className="text-4xl lg:text-5xl xl:text-7xl font-light leading-[125%] pl-5 md:pl-20 lg:pl-20 xl:pl-40">
+              We provide innovative, tailored IT
             </p>
-            <p className="text-3xl lg:text-5xl xl:text-6xl font-extralight leading-normal pl-5">
-              to enhance efficiency, security, and growth.
+            <p className="text-4xl lg:text-5xl xl:text-7xl font-light leading-[125%] pl-5">
+              solutions to enhance efficiency, security, and
             </p>
-            <div className="hidden md:block w-[70%]"></div>
+            <p className="text-4xl lg:text-5xl xl:text-7xl font-light leading-[125%] pl-5">
+              growth.
+            </p>
           </div>
         </div>
 
         {/* Positioned RoundImage at bottom-left */}
         <div className="absolute bottom-20 md:bottom-10 right-2 lg:right-8">
-          <button className="flex items-center gap-2 border border-gray-400 rounded-full px-3 py-1 text-sm font-medium hover:bg-gray-100 transition">
+          {/* <button className="flex items-center gap-2 border border-gray-400 rounded-full px-3 py-1 text-sm font-medium hover:bg-gray-100 transition">
             <span>Book a Meeting</span>
             <ArrowAngleRight />
-          </button>
+          </button> */}
+          <BookNow />
         </div>
       </section>
 
@@ -176,7 +180,7 @@ const CapabilityPage = () => {
                 )}
               </div>
 
-              <div className="w-full lg:w-1/4 text-4xl md:text-5xl font-medium hover:text-white">
+              <div className="w-full lg:w-1/4 text-4xl md:text-5xl mb-2 font-medium hover:text-white">
                 {capability.title}
               </div>
 
@@ -200,12 +204,14 @@ const CapabilityPage = () => {
       {/* text */}
       <section className="w-full bg-white px-4 py-5 lg:h-[591px] flex items-center justify-start">
         <div className=" items-center">
-          <p className="text-gray-500 text-base pl-0 md:pl-10">WHY WE</p>
+          <p className="text-gray-500 text-base font-bold pl-5 md:pl-10">
+            WHY WE
+          </p>
           <div className="w-full md:max-w-5xl mt-2 pl-5 md:pl-10">
             <div ref={triggerRef}>
               {text.split("").map((letter, index) => (
                 <span
-                  className="text-4xl md:text-6xl leading-12  md:leading-20  text-white drop-shadow-lg"
+                  className="text-4xl md:text-6xl leading-12 md:leading-20  text-white drop-shadow-lg"
                   key={`${letter}-${index}`}
                   ref={setlettersRef}
                 >
@@ -225,8 +231,12 @@ const CapabilityPage = () => {
               <div key={index} className="absolute">
                 <div className="text-start px-10 md:px-20 h-full">
                   <div className="text-xs md:text-sm mb-5">{item.icon}</div>
-                  <h3 className="text-2xl md:text-4xl font-bold mb-5">{item.title}</h3>
-                  <p className="text-gray-600 text-md md:text-xl">{item.description}</p>
+                  <h3 className="text-2xl md:text-4xl font-bold mb-5">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-md md:text-xl">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </PixelCard>

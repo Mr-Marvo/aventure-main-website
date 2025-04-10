@@ -46,6 +46,7 @@ function ServicesSection() {
   const [lettersRef, setlettersRef] = useArrayRef<HTMLSpanElement>();
   const [hoveredId, setHoveredId] = useState<number | null>(2);
   const [hovered2Id, setHovered2Id] = useState<number | null>(3);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Check if any row is hovered separately
   const isFirstRowHovered = hoveredId !== null;
@@ -54,6 +55,15 @@ function ServicesSection() {
   const router = useRouter();
 
   const triggerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   function useArrayRef<T>() {
     const lettersRef = useRef<T[]>([]);
@@ -96,7 +106,7 @@ function ServicesSection() {
       <div className="h-[10vh]"></div>
       <div className="px-4 md:pl-20 md:pr-[7%]">
         <h2 className="text-base uppercase text-gray-300 tracking-wide">
-        Capabilities
+          Capabilities
         </h2>
         <div ref={triggerRef} className="mt-3 w-full lg:w-3/4">
           {text.split("").map((letter, index) => (
@@ -115,14 +125,15 @@ function ServicesSection() {
         <div className="mt-1 flex flex-col md:flex-row gap-4 md:gap-2">
           {services.map((service) => {
             const isHovered =
+              isMobile ||
               hoveredId === service.id ||
               (!isFirstRowHovered && service.isDefault);
 
             return (
               <div
                 key={service.id}
-                onMouseEnter={() => setHoveredId(service.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                onMouseEnter={() => !isMobile && setHoveredId(service.id)}
+                onMouseLeave={() => !isMobile && setHoveredId(null)}
                 onClick={() => router.push("/capabilities")}
                 className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
                          ${
@@ -162,14 +173,15 @@ function ServicesSection() {
         <div className="mt-4 md:mt-2 flex flex-col md:flex-row gap-4 md:gap-2">
           {services2.map((service2) => {
             const isHovered =
+              isMobile ||
               hovered2Id === service2.id ||
               (!isSecondRowHovered && service2.isDefault);
 
             return (
               <div
                 key={service2.id}
-                onMouseEnter={() => setHovered2Id(service2.id)}
-                onMouseLeave={() => setHovered2Id(null)}
+                onMouseEnter={() => !isMobile && setHovered2Id(service2.id)}
+                onMouseLeave={() => !isMobile && setHovered2Id(null)}
                 onClick={() => router.push("/capabilities")}
                 className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
                          ${
