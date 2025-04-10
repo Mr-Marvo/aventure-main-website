@@ -87,7 +87,9 @@ const Slider = () => {
     <section className="h-[500px] md:h-screen p-4 md:p-20">
       <div className="flex flex-col justify-between w-full z-30 overflow-y-hidden">
         <div className="mb-7 md:mb-1">
-          <h1 className="text-xl md:text-2xl">FEATURED PROJECTS</h1>
+          <h1 className="text-xl md:text-2xl font-semibold">
+            FEATURED PROJECTS
+          </h1>
         </div>
 
         {/* Navigation Arrows */}
