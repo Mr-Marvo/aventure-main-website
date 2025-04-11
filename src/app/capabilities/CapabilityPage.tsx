@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import PixelCard from "../components/animations/PixelCard";
 import FollowCursor from "../components/animations/FollowCursor";
 import BookNow from "./BookNow";
+import CalendlyButton from "./BookNow";
 
 const CapabilityPage = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -150,7 +151,13 @@ const CapabilityPage = () => {
             <span>Book a Meeting</span>
             <ArrowAngleRight />
           </button> */}
-          <BookNow />
+          <CalendlyButton
+            label="Book a Meeting"
+            url="https://calendly.com/aventureitsolution/30min"
+            primaryIcon={<ArrowAngleRight />}
+            hoverIcon={<ArrowAngleRight />}
+            className="border border-black rounded-full"
+          />
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import ArrowAngleRight from "../assets/svgs/ArrowAngleRight";
+
+import React, { useEffect, useState } from "react";
 
 // Extend the window interface for TypeScript
 declare global {
@@ -11,7 +11,23 @@ declare global {
   }
 }
 
-const BookNow: React.FC = () => {
+interface CalendlyButtonProps {
+  label?: string;
+  url: string;
+  primaryIcon: React.ReactNode;
+  hoverIcon: React.ReactNode;
+  className?: string;
+}
+
+const CalendlyButton: React.FC<CalendlyButtonProps> = ({
+  label = "Let's Talk",
+  url,
+  primaryIcon,
+  hoverIcon,
+  className = "",
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -26,9 +42,7 @@ const BookNow: React.FC = () => {
 
   const openCalendly = () => {
     if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: "https://calendly.com/aventureitsolution/30min",
-      });
+      window.Calendly.initPopupWidget({ url });
     } else {
       console.warn("Calendly is not loaded yet.");
     }
@@ -37,12 +51,14 @@ const BookNow: React.FC = () => {
   return (
     <button
       onClick={openCalendly}
-      className="flex items-center gap-2 border border-gray-400 rounded-full px-3 py-1 text-sm font-medium hover:bg-gray-100 transition"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`flex items-center justify-center whitespace-nowrap text-sm md:text-lg py-0.3 md:py-2 px-2 md:px-4 rounded-full transition ${className}`}
     >
-      <span>Book a Meeting</span>
-      <ArrowAngleRight />
+      {label}
+      <span className="">{isHovered ? hoverIcon : primaryIcon}</span>
     </button>
   );
 };
 
-export default BookNow;
+export default CalendlyButton;
