@@ -9,6 +9,7 @@ import InstaIcon from "../assets/svgs/InstaIcon";
 import ArrowRight from "../assets/svgs/ArrowRight";
 import ArrowAngleRightWhite from "../assets/svgs/ArrowAngleRightWhite";
 import localFont from "next/font/local";
+import CalendlyButton from "../capabilities/BookNow";
 
 const baunkFont = localFont({
   src: "../font/Baunk.ttf",
@@ -41,7 +42,7 @@ const Footer = () => {
         </h2>
 
         <div className="flex flex-col px-10 md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
-          <button
+          {/* <button
             className="flex items-center justify-center whitespace-nowrap text-lg border border-white py-2 px-4 rounded-full transition"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -50,7 +51,14 @@ const Footer = () => {
             <span className="ml-2">
               {isHovered ? <ArrowRight /> : <ArrowAngleRightWhite />}
             </span>
-          </button>
+          </button> */}
+          <CalendlyButton
+            label="Let's Talk"
+            url="https://calendly.com/aventureitsolution/30min"
+            primaryIcon={<ArrowAngleRightWhite />}
+            hoverIcon={<ArrowRight />}
+            className="border border-white rounded-full"
+          />
           <p className="text-gray-400 text-lg lg:text-2xl xl:text-[40px]">
             the impact you’d like to make and blow your business mind.
           </p>
