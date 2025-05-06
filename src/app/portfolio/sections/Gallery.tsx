@@ -10,39 +10,9 @@ interface GalleryItem {
   description: string;
   category: string;
   url: string;
-
 }
 
 const galleryItems: GalleryItem[] = [
-  // {
-  //   id: 1,
-  //   image: "/Image Block.png",
-  //   title: "SAAS PRODUCT TESTING",
-  //   description: "UX/UI Web Development",
-  //   category: "SAAS",
-  // },
-  // {
-  //   id: 2,
-  //   image: "/Image Block (1).png",
-  //   title: "WEB APPLICATION TESTING",
-  //   description: "UX/UI Web Development",
-  //   category: "Web Application",
-  // },
-  // {
-  //   id: 3,
-  //   image: "/Image Block (2).png",
-  //   title: "MOBILE APPLICATION TESTING",
-  //   description: "UX/UI Web Development",
-  //   category: "Mobile Application",
-  // },
-  // {
-  //   id: 4,
-  //   image: "/Image Block (3).png",
-  //   title: "SAAS PRODUCT TESTING",
-  //   description: "UX/UI Web Development",
-  //   category: "SAAS",
-  // },
-
   {
     id: 1,
     image: "/kpiscoremain.png",
@@ -75,7 +45,6 @@ const galleryItems: GalleryItem[] = [
     url: "/portfolio/jayamaga",
     category: "SAAS",
   },
-
 ];
 
 // Function to count items per category
@@ -132,16 +101,15 @@ const Gallery: React.FC = () => {
             className="bg-white rounded-3xl overflow-hidden"
             // onClick={() => router.push(`/project-preview`)}
             onClick={() => router.push(`${item.url}`)}
-
           >
             <div className="relative w-full h-96 overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.title}
                 layout="fill"
-                objectFit="cover"
+                // objectFit="cover"
                 priority={index < 2}
-                className="transition-transform duration-500 hover:scale-125"
+                className="transition-transform duration-500 hover:scale-125 object-contain"
               />
             </div>
             <div className="p-4">

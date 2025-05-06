@@ -62,27 +62,6 @@ const Slider = () => {
   };
 
   const sliderData: SliderData[] = [
-    // {
-    //   image: "/Image Block.png",
-    //   title: "saas product testing",
-    //   description: "UI/UX | Web Development.",
-    // },
-    // {
-    //   image: "/Image Block (1).png",
-    //   title: "saas product testing",
-    //   description: "UI/UX | Web Development.",
-    // },
-    // {
-    //   image: "/Image Block (2).png",
-    //   title: "saas product testing",
-    //   description: "UI/UX | Web Development.",
-    // },
-    // {
-    //   image: "/Image Block (3).png",
-    //   title: "saas product testing",
-    //   description: "UI/UX | Web Development.",
-    // },
-
     {
       image: "/kpiscoremain.png",
       title: "KPI Score",
