@@ -9,35 +9,40 @@ interface GalleryItem {
   title: string;
   description: string;
   category: string;
+  url: string;
 }
 
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    image: "/Image Block.png",
-    title: "SAAS PRODUCT TESTING",
-    description: "UX/UI Web Development",
+    image: "/kpiscoremain.png",
+    title: "KPI Score",
+    description: "Transforming Performance into Progress",
+    url: "/portfolio/kpi-score",
     category: "SAAS",
   },
   {
     id: 2,
-    image: "/Image Block (1).png",
-    title: "WEB APPLICATION TESTING",
-    description: "UX/UI Web Development",
+    image: "/saleswinmain.png",
+    title: "SalesWin",
+    description: "A CRM That Delivers More for Less",
+    url: "/portfolio/saleswin",
     category: "Web Application",
   },
   {
     id: 3,
-    image: "/Image Block (2).png",
-    title: "MOBILE APPLICATION TESTING",
-    description: "UX/UI Web Development",
+    image: "/jobNinjamain.png",
+    title: "Jobs Ninja",
+    description: "Get the Job Done Effortlessly",
+    url: "/portfolio/jobs-ninja",
     category: "Mobile Application",
   },
   {
     id: 4,
-    image: "/Image Block (3).png",
-    title: "SAAS PRODUCT TESTING",
-    description: "UX/UI Web Development",
+    image: "/jayamagamain.png",
+    title: "Jayamaga",
+    description: "Smart Learning for Young Minds",
+    url: "/portfolio/jayamaga",
     category: "SAAS",
   },
 ];
@@ -94,16 +99,17 @@ const Gallery: React.FC = () => {
           <div
             key={index}
             className="bg-white rounded-3xl overflow-hidden"
-            onClick={() => router.push(`/project-preview`)}
+            // onClick={() => router.push(`/project-preview`)}
+            onClick={() => router.push(`${item.url}`)}
           >
             <div className="relative w-full h-96 overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.title}
                 layout="fill"
-                objectFit="cover"
+                // objectFit="cover"
                 priority={index < 2}
-                className="transition-transform duration-500 hover:scale-125"
+                className="transition-transform duration-500 hover:scale-125 object-contain"
               />
             </div>
             <div className="p-4">

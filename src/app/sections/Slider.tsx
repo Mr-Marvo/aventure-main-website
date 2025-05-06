@@ -7,6 +7,7 @@ type SliderData = {
   image: string;
   title: string;
   description: string;
+  url: string;
 };
 
 const Slider = () => {
@@ -62,24 +63,28 @@ const Slider = () => {
 
   const sliderData: SliderData[] = [
     {
-      image: "/Image Block.png",
-      title: "saas product testing",
-      description: "UI/UX | Web Development.",
+      image: "/kpiscoremain.png",
+      title: "KPI Score",
+      description: "Transforming Performance into Progress",
+      url: "/portfolio/kpi-score",
     },
     {
-      image: "/Image Block (1).png",
-      title: "saas product testing",
-      description: "UI/UX | Web Development.",
+      image: "/saleswinmain.png",
+      title: "SalesWin",
+      description: "A CRM That Delivers More for Less",
+      url: "/portfolio/saleswin",
     },
     {
-      image: "/Image Block (2).png",
-      title: "saas product testing",
-      description: "UI/UX | Web Development.",
+      image: "/jobNinjamain.png",
+      title: "Jobs Ninja",
+      description: "Get the Job Done Effortlessly",
+      url: "/portfolio/jobs-ninja",
     },
     {
-      image: "/Image Block (3).png",
-      title: "saas product testing",
-      description: "UI/UX | Web Development.",
+      image: "/jayamagamain.png",
+      title: "Jayamaga",
+      description: "Smart Learning for Young Minds",
+      url: "/portfolio/jayamaga",
     },
   ];
 
@@ -127,7 +132,7 @@ const Slider = () => {
                 />
                 {/* Centered arrow */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
-                  <Link href="/portfolio">
+                  <Link href={item.url}>
                     <button className="text-white p-7 rounded-full bg-buttonGreen transition-all">
                       <FaArrowRight size={20} />
                     </button>
