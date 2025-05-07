@@ -3,26 +3,27 @@ import { useRef } from "react";
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-// Slick Carousel styles (Required)
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import FollowCursor from "../components/animations/FollowCursor";
 
 const testimonials = [
   {
     id: 1,
-    text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
-    author: "Lorem CEO of Ipsum",
+    text: "An innovative web developer who consistently delivered beyond expectations. They were not only technically skilled but also incredibly patient and professional throughout the process. Communication was smooth, and deadlines were met without any issues. I truly appreciated the dedication and attention to detail. Highly recommend working with them for any digital project.",
+    author: "Lena Marie",
+    role:"Entrepreneur",
   },
   {
     id: 2,
-    text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
-    author: "Lorem CEO of Ipsum",
+    text: "This developer has an exceptional eye for design combined with a deep understanding of web development. They transformed our ideas into a beautiful, high-performing site with a clean, modern look. Their approach was creative, thoughtful, and technically sound. If you're looking for top-tier quality and reliability, I highly recommend their services.",
+    author: "Azka Brown",
+    role:"Brand Developer",
   },
   {
     id: 3,
-    text: "Cras gravida felis, convallis. lobortis, at, nisl. ex. vitae Ut amet, tempor Quisque odio ullamcorper non, nisl. Nam efficitur. ultrices fringilla hendrerit orci Lorem vitae faucibus lacus urna. ullamcorper tortor. urna. tincidunt ex nibh",
-    author: "Lorem CEO of Ipsum",
+    text: "I’m genuinely impressed by their talent as a web developer. The application delivered was both functionally robust and visually stunning. It’s rare to find someone with such a strong balance of design sensibility and technical know-how. Their work exceeded my expectations and brought real value to our project. Absolutely recommend them!",
+    author: "Nicol Icon",
+    role:"Business Owner",
   },
 ];
 
@@ -63,15 +64,17 @@ const TestimonialSlider = () => {
         </h2>
 
         {/* Slider Container */}
-        <div className="relative">
+        <div className="relative p-5 ">
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
-              <div key={index} className="px-4">
-                <div className="bg-white shadow-sm p-6 text-center">
-                  <p className="text-gray-500 text-sm md:text-lg mb-4">
+              <div key={index} className="px-4 h-[300px] ">
+                <div className="bg-white drop-shadow-lg  p-4 text-center h-full">
+                  <p className="text-gray-500 text-xs md:text-md mb-4">
                     {item.text}
                   </p>
                   <h3 className="font-bold text-gray-700">{item.author}</h3>
+                  <h3 className="font-bold text-gray-700">{item.role}</h3>
+
                 </div>
               </div>
             ))}
