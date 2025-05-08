@@ -42,22 +42,12 @@ const Footer = () => {
         </h2>
 
         <div className="flex flex-col px-10 md:flex-row justify-start gap-9 items-center mt-6 border-t border-gray-700 pt-6">
-          {/* <button
-            className="flex items-center justify-center whitespace-nowrap text-lg border border-white py-2 px-4 rounded-full transition"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            Let&apos;s Talk
-            <span className="ml-2">
-              {isHovered ? <ArrowRight /> : <ArrowAngleRightWhite />}
-            </span>
-          </button> */}
           <CalendlyButton
             label="Let's Talk"
             url="https://calendly.com/aventureitsolution/30min"
             primaryIcon={<ArrowAngleRightWhite />}
             hoverIcon={<ArrowRight />}
-            className="border border-white rounded-full"
+            className="border border-white rounded-full cursor-pointer"
           />
           <p className="text-gray-400 text-lg lg:text-2xl xl:text-[40px]">
             the impact you’d like to make and blow your business mind.
@@ -119,7 +109,7 @@ const Footer = () => {
               WE RESPOND WITHIN A FEW HOURS
             </h3>
             <p className="text-2xl font-bold md:text-[26px] text-white lg:text-[36px]">
-              +9472 22 22 222
+              +94 71 467 1504
             </p>
             <p className="mt-5 text-sm font-bold text-white">
               3RD FLOOR, SOMANANDA RD, HORANA, SRI LANKA

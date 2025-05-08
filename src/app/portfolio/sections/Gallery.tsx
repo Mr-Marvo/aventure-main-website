@@ -27,7 +27,7 @@ const galleryItems: GalleryItem[] = [
     title: "SalesWin",
     description: "A CRM That Delivers More for Less",
     url: "/portfolio/saleswin",
-    category: "Web Application",
+    category: "SAAS",
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const galleryItems: GalleryItem[] = [
     title: "Jobs Ninja",
     description: "Get the Job Done Effortlessly",
     url: "/portfolio/jobs-ninja",
-    category: "Mobile Application",
+    category: "SAAS",
   },
   {
     id: 4,
@@ -43,11 +43,10 @@ const galleryItems: GalleryItem[] = [
     title: "Jayamaga",
     description: "Smart Learning for Young Minds",
     url: "/portfolio/jayamaga",
-    category: "SAAS",
+    category: "Mobile Application",
   },
 ];
 
-// Function to count items per category
 const getCategoryCounts = () => {
   const counts: Record<string, number> = { All: galleryItems.length };
   galleryItems.forEach(({ category }) => {
