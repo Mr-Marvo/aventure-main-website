@@ -66,10 +66,9 @@ const Hero: React.FC = () => {
 
           {/* Explore Button */}
           <div className="mt-6 flex justify-end pr-4">
-
             <button
               onClick={handleExploreClick}
-              className="flex flex-row items-center justify-center gap-1 px-4 py-0.5 md:px-6 md:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20"
+              className="flex flex-row items-center justify-center gap-1 px-4 py-0.5 md:px-6 md:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20 cursor-pointer"
             >
               <DownArrow />
               <span className="-ml-2 mt-2 text-lg">EXPLORE</span>

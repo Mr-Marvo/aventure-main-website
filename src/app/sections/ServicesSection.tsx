@@ -135,7 +135,7 @@ function ServicesSection() {
                 onMouseEnter={() => !isMobile && setHoveredId(service.id)}
                 onMouseLeave={() => !isMobile && setHoveredId(null)}
                 onClick={() => router.push("/capabilities")}
-                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
+                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between cursor-pointer
                          ${
                            isHovered
                              ? "w-full md:w-[60%] h-[280px]"
@@ -183,7 +183,7 @@ function ServicesSection() {
                 onMouseEnter={() => !isMobile && setHovered2Id(service2.id)}
                 onMouseLeave={() => !isMobile && setHovered2Id(null)}
                 onClick={() => router.push("/capabilities")}
-                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between
+                className={`relative transition-all duration-300 ease-in-out rounded-4xl p-12 border border-white bg-white text-black flex flex-col justify-between cursor-pointer
                          ${
                            isHovered
                              ? "w-full md:w-[60%] h-[280px]"

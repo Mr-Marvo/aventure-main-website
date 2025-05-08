@@ -7,7 +7,7 @@ export default function About() {
   return (
     <div>
       <AboutHero />
-      <MeetTheTeam />
+      {/* <MeetTheTeam /> */}
       <OurProcess />
       <Slider />
     </div>

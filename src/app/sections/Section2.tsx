@@ -3,51 +3,31 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import RoundImage from "../assets/Section2/RoundImage";
-import DecryptedText from "../components/animations/DecryptedText";
 import VideoSection from "./VideoSection";
+import BlurText from "../components/animations/BlurText";
 
 const Section2 = ({ id }: { id: string }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [isInsideSection, setIsInsideSection] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current && sectionRef.current.contains(e.target as Node)) {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        setIsInsideSection(true);
+      } else {
+        setIsInsideSection(false);
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  useEffect(() => {
-    if (!imageRef.current || !sectionRef.current) return;
-
-    const imageRect = imageRef.current.getBoundingClientRect();
-    const imageCenter = {
-      x: imageRect.left + imageRect.width / 2,
-      y: imageRect.top + imageRect.height / 2,
-    };
-
-    // Calculate exact offset needed to center image on cursor
-    const offsetX = mousePosition.x - imageCenter.x;
-    const offsetY = mousePosition.y - imageCenter.y;
-
-    // Apply different follow intensities
-    const followIntensity = isHovering ? 0.95 : 0.1; // 95% follow when hovering
-
-    setImagePosition({
-      x: offsetX * followIntensity,
-      y: offsetY * followIntensity,
-    });
-  }, [mousePosition, isHovering]);
-
-
   const handleScrollClick = () => {
     const videoSection = document.getElementById("videoSection");
-    if (videoSection) {      
+    if (videoSection) {
       videoSection.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -57,9 +37,7 @@ const Section2 = ({ id }: { id: string }) => {
       <section
         ref={sectionRef}
         id={id}
-        className="relative w-full h-[500px] md:h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black"
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
+        className="relative w-full h-[500px] md:h-screen flex flex-col md:flex-row items-center justify-center px-4 md:pl-20 text-black cursor-none"
       >
         {/* Background Image */}
         <div className="absolute inset-0 top-20 md:top-44 left-0 md:left-[600px]">
@@ -73,38 +51,35 @@ const Section2 = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        {/* Content Container */}
+        {isInsideSection && (
+          <div
+            className="fixed top-0 left-0 z-[9999] pointer-events-auto w-16 h-16 md:w-24 md:h-24"
+            onClick={handleScrollClick}
+            style={{
+              transform: `translate(${mousePosition.x - 48}px, ${
+                mousePosition.y - 48
+              }px)`,
+              transition: "transform 0.05s linear",
+            }}
+          >
+            <RoundImage className="w-full h-full" />
+          </div>
+        )}
+
+        {/* Content */}
         <div className="relative z-10 w-full mx-auto">
-          {/* Main Heading */}
-          <div onMouseEnter={() => setIsHovering(true)}>
-            <DecryptedText
+          <div>
+            <BlurText
               text="Empowering enterprises with cutting-edge solutions"
-              speed={90}
-              maxIterations={30}
-              animateOn="view"
-              revealDirection="center"
-              sequential={true}
+              delay={300}
+              animateBy="words"
+              direction="top"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] xl:text-[120px] font-normal mb-6 md:mb-8"
             />
           </div>
 
-          {/* Subheading & Round Image */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-44 pt-6 md:pt-12">
-            {/* Round Image with Strong Magnet Effect */}
-            <div
-              ref={imageRef}
-              className="hidden md:block  w-20 h-20 md:w-52 md:h-52 transition-transform duration-100 ease-linear cursor-pointer"
-              style={{
-                transform: `translate(${imagePosition.x}px, ${imagePosition.y}px)`,
-                willChange: "transform",
-              }}
-              onClick={handleScrollClick}
-            >
-              <RoundImage className="w-full h-full"/>
-            </div>
-
-            {/* Text */}
-            <div onMouseEnter={() => setIsHovering(true)}>
+            <div>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center md:text-right text-gray-400 mb-6 md:mb-12 px-4 md:px-11">
                 AI-driven innovation, and transformative technology to enhance
                 efficiency, drive growth, optimise operations, and unlock new
@@ -115,7 +90,7 @@ const Section2 = ({ id }: { id: string }) => {
         </div>
       </section>
 
-      {/* section 3 */}
+      {/* Section 3 */}
       <VideoSection id="videoSection" />
     </>
   );

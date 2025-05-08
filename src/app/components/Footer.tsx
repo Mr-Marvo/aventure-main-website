@@ -71,24 +71,36 @@ const Footer = () => {
             </h3>
 
             <ul className="mt-3 space-y-2">
-              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+              <a
+                className="flex items-center justify-center md:justify-start cursor-pointer group"
+                href="https://www.linkedin.com/company/aventure-it"
+                target="blank"
+              >
                 <LinkedInIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
                 <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   LinkedIn
                 </span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+              </a>
+              <a
+                className="flex items-center justify-center md:justify-start cursor-pointer group"
+                href="https://www.facebook.com/aventureit"
+                target="blank"
+              >
                 <FacebookIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
                 <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Facebook
                 </span>
-              </li>
-              <li className="flex items-center justify-center md:justify-start cursor-pointer group">
+              </a>
+              <a
+                className="flex items-center justify-center md:justify-start cursor-pointer group"
+                href="https://www.instagram.com/aventureit"
+                target="blank"
+              >
                 <InstaIcon className="w-0 opacity-0 transform -translate-x-4 group-hover:w-auto group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mr-2" />
                 <span className="text-2xl font-bold md:text-3xl lg:text-4xl transition-all duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:ml-2">
                   Instagram
                 </span>
-              </li>
+              </a>
             </ul>
           </div>
 
@@ -96,14 +108,18 @@ const Footer = () => {
             <h3 className="text-sm text-white font-bold uppercase">
               Monday–Friday, 9AM–6PM
             </h3>
-            <p className=" font-bold text-2xl text-white md:text-[26px] lg:text-[36px]">
+            <a
+              className=" font-bold text-2xl text-white md:text-[26px] lg:text-[36px]"
+              href="mailto:info@aventure.com?subject=Let's%20Work%20Together&body=Hey%20Aventure%2C%0A%0AI'd%20like%20to%20chat%20about..."
+              target="blank"
+            >
               info@aventure.com
-            </p>
+            </a>
             <h3 className="mt-5 text-sm font-bold text-white uppercase">
               WE RESPOND WITHIN A FEW HOURS
             </h3>
             <p className="text-2xl font-bold md:text-[26px] text-white lg:text-[36px]">
-              +9411 234 5678
+              +9472 22 22 222
             </p>
             <p className="mt-5 text-sm font-bold text-white">
               3RD FLOOR, SOMANANDA RD, HORANA, SRI LANKA

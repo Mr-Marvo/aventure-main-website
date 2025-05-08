@@ -145,18 +145,13 @@ const CapabilityPage = () => {
           </div>
         </div>
 
-        {/* Positioned RoundImage at bottom-left */}
-        <div className="absolute bottom-20 md:bottom-10 right-2 lg:right-8">
-          {/* <button className="flex items-center gap-2 border border-gray-400 rounded-full px-3 py-1 text-sm font-medium hover:bg-gray-100 transition">
-            <span>Book a Meeting</span>
-            <ArrowAngleRight />
-          </button> */}
+        <div className="absolute bottom-20 md:bottom-10 right-2 lg:right-8 ">
           <CalendlyButton
             label="Book a Meeting"
             url="https://calendly.com/aventureitsolution/30min"
             primaryIcon={<ArrowAngleRight />}
             hoverIcon={<ArrowAngleRight />}
-            className="border border-black rounded-full"
+            className="border border-black rounded-full cursor-pointer"
           />
         </div>
       </section>

@@ -76,7 +76,6 @@ const Gallery: React.FC = () => {
 
   return (
     <div className="container mx-auto p-10">
-      {/* Category Filter Buttons */}
       <div className="mb-6 flex flex-wrap gap-4">
         {orderedCategories.map((category, index) => (
           <button
@@ -93,27 +92,27 @@ const Gallery: React.FC = () => {
         ))}
       </div>
 
-      {/* Gallery Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {filteredItems.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-3xl overflow-hidden"
-            // onClick={() => router.push(`/project-preview`)}
+            className="bg-white rounded-3xl overflow-hidden cursor-pointer"
             onClick={() => router.push(`${item.url}`)}
           >
-            <div className="relative w-full h-96 overflow-hidden">
+            <div className="relative w-full h-[300px] lg:h-[500px] overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.title}
                 layout="fill"
-                // objectFit="cover"
                 priority={index < 2}
-                className="transition-transform duration-500 hover:scale-125 object-contain"
+                className="transition-transform duration-500 hover:scale-125"
               />
             </div>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
+
+            <div className="mt-2  pb-4">
+              <h3 className="text-lg font-semibold text-gray-900">
+                {item.title}
+              </h3>
               <p className="text-sm text-gray-600">{item.description}</p>
             </div>
           </div>
