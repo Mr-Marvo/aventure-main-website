@@ -11,18 +11,10 @@ const baunkFont = localFont({
 });
 
 const Hero: React.FC = () => {
-  const handleExploreClick = () => {
-    const section2 = document.getElementById("section2");
-    if (section2) {
-      section2.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const lettersRef = useRef<HTMLSpanElement[]>([]);
 
   gsap.registerPlugin(ScrollTrigger);
-
   const text = "AVENTURE";
 
   useEffect(() => {
@@ -41,22 +33,32 @@ const Hero: React.FC = () => {
     });
   }, []);
 
+  const handleExploreClick = () => {
+    const section2 = document.getElementById("section2");
+    if (section2) {
+      section2.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <section className="relative w-full h-[500px] md:h-screen flex overflow-hidden">
-        {/* Background Video */}
+        {/* Background Video - preload + poster fallback */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/background-poster.jpg" // Optional: fallback poster image
         >
           <source src="/background-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col pt-16 pl-6 md:pl-12 w-full">
@@ -64,9 +66,7 @@ const Hero: React.FC = () => {
             We Make Concepts <br /> into Tangible Solutions
           </p>
 
-          {/* Explore Button */}
           <div className="mt-6 flex justify-end pr-4">
-
             <button
               onClick={handleExploreClick}
               className="flex flex-row items-center justify-center gap-1 px-4 py-0.5 md:px-6 md:py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm transition hover:bg-white/20"
@@ -79,20 +79,18 @@ const Hero: React.FC = () => {
 
         {/* Animated AVENTURE Text */}
         <div className="absolute bottom-10">
-          <div>
-            <div ref={triggerRef}>
-              {text.split("").map((letter, index) => (
-                <span
-                  key={index}
-                  ref={(el) => {
-                    if (el) lettersRef.current[index] = el;
-                  }}
-                  className={`text-fluid text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
-                >
-                  {letter}
-                </span>
-              ))}
-            </div>
+          <div ref={triggerRef}>
+            {text.split("").map((letter, index) => (
+              <span
+                key={index}
+                ref={(el) => {
+                  if (el) lettersRef.current[index] = el;
+                }}
+                className={`text-fluid text-white drop-shadow-lg transition-all duration-500 ease-out ${baunkFont.className}`}
+              >
+                {letter}
+              </span>
+            ))}
           </div>
         </div>
       </section>
