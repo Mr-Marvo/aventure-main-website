@@ -67,13 +67,13 @@ const TestimonialSlider = () => {
         <div className="relative p-5 ">
           <Slider ref={sliderRef} {...settings}>
             {testimonials.map((item, index) => (
-              <div key={index} className="px-4 h-[300px] ">
+              <div key={index} className="px-4 h-[300px] xl:h-[450px] p-2">
                 <div className="bg-white drop-shadow-lg  p-4 text-center h-full">
-                  <p className="text-gray-500 text-xs md:text-md mb-4">
+                  <p className="text-gray-500 text-xs md:text-md xl:text-lg  mb-4">
                     {item.text}
                   </p>
-                  <h3 className="font-bold text-gray-700">{item.author}</h3>
-                  <h3 className="font-bold text-gray-700">{item.role}</h3>
+                  <h3 className="font-extrabold text-black text-md">{item.author}</h3>
+                  <h3 className="font-semibold text-gray-500 text-sm">{item.role}</h3>
 
                 </div>
               </div>

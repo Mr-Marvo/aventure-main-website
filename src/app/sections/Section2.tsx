@@ -8,21 +8,39 @@ import BlurText from "../components/animations/BlurText";
 
 const Section2 = ({ id }: { id: string }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isInsideSection, setIsInsideSection] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [cursorInside, setCursorInside] = useState(false);
+  const [sectionVisible, setSectionVisible] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (sectionRef.current && sectionRef.current.contains(e.target as Node)) {
         setMousePosition({ x: e.clientX, y: e.clientY });
-        setIsInsideSection(true);
+        setCursorInside(true);
       } else {
-        setIsInsideSection(false);
+        setCursorInside(false);
+      }
+    };
+
+    const checkVisibility = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        setSectionVisible(isVisible);
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", checkVisibility);
+    window.addEventListener("resize", checkVisibility);
+
+    checkVisibility();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", checkVisibility);
+      window.removeEventListener("resize", checkVisibility);
+    };
   }, []);
 
   const handleScrollClick = () => {
@@ -51,7 +69,7 @@ const Section2 = ({ id }: { id: string }) => {
           </div>
         </div>
 
-        {isInsideSection && (
+        {cursorInside && sectionVisible && (
           <div
             className="fixed top-0 left-0 z-[9999] pointer-events-auto w-16 h-16 md:w-24 md:h-24"
             onClick={handleScrollClick}

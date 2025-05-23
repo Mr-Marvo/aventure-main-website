@@ -68,7 +68,7 @@ const Project4 = () => {
       {/* Content Section */}
       <div className="w-full flex flex-col md:flex-row justify-between text-left py-20 px-5 md:px-10">
         <div className="w-full">
-          <h2 className="text-lg md:text-xl mb-5 md:mb-10">PROJECT OVERVIEW</h2>
+          <h2 className="text-lg md:text-2xl mb-5 md:mb-10 font-bold text-black">PROJECT OVERVIEW</h2>
           <h2 className="text-base md:text-xl font-normal leading-relaxed">
             {demo4Data?.about.description}
           </h2>
@@ -83,7 +83,7 @@ const Project4 = () => {
 
       <div className="w-full flex flex-col md:flex-row justify-start text-left py-10 px-5 md:px-10">
         <div className="w-full">
-          <h2 className="text-lg font-semibold mb-5 md:mb-10">The Challenge</h2>
+          <h2 className="text-lg md:text-2xl mb-5 md:mb-10 font-bold text-black">The Challenge</h2>
           <h2 className="text-xl md:text-2xl font-normal leading-relaxed">
             {demo4Data?.challenge.description}
           </h2>
@@ -125,7 +125,7 @@ const Project4 = () => {
         </div>
 
         <div className="w-full md:w-1/3 text-left mt-10 md:mt-0">
-          <h2 className="text-xl md:text-xl xl:text-2xl font-semibold mb-5 md:mb-9">
+          <h2 className="text-xl md:text-xl xl:text-2xl font-bold mb-5 md:mb-9">
             The Sollution
           </h2>
           <h2 className="text-lg md:text-xl xl:text-2xl font-normal leading-8 lg:leading-12">

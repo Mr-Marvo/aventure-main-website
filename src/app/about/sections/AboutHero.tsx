@@ -10,9 +10,36 @@ const AboutHero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isInsideSection, setIsInsideSection] = useState(false);
   const heroSectionRef = useRef<HTMLElement>(null);
+  const [cursorInside, setCursorInside] = useState(false);
+  const [sectionVisible, setSectionVisible] = useState(false);
 
   useEffect(() => {
-    const updateScrollProgress = () => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroSectionRef.current) return;
+
+      const rect = heroSectionRef.current.getBoundingClientRect();
+      const isInside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+
+      if (isInside) {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+        setCursorInside(true);
+      } else {
+        setCursorInside(false);
+      }
+    };
+
+    const checkVisibilityAndScroll = () => {
+      if (heroSectionRef.current) {
+        const rect = heroSectionRef.current.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        setSectionVisible(isVisible);
+      }
+
+      // Scroll progress logic
       const scrollY = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
@@ -20,37 +47,16 @@ const AboutHero = () => {
       setScrollProgress(progress);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = heroSectionRef.current?.getBoundingClientRect();
-      if (!rect) return;
-
-      const sectionTop = rect.top + window.scrollY;
-      const sectionBottom = sectionTop + rect.height;
-      const mouseY = window.scrollY + e.clientY;
-
-      const isInside =
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        mouseY >= sectionTop &&
-        mouseY <= sectionBottom;
-
-      if (isInside) {
-        setIsInsideSection(true);
-        setMousePosition({
-          x: e.clientX,
-          y: e.clientY,
-        });
-      } else {
-        setIsInsideSection(false);
-      }
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", checkVisibilityAndScroll);
+    window.addEventListener("resize", checkVisibilityAndScroll);
+
+    checkVisibilityAndScroll();
 
     return () => {
-      window.removeEventListener("scroll", updateScrollProgress);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", checkVisibilityAndScroll);
+      window.removeEventListener("resize", checkVisibilityAndScroll);
     };
   }, []);
 
@@ -76,7 +82,7 @@ const AboutHero = () => {
           hoverFillColor="#F1F1F1"
         />
 
-        {isInsideSection && (
+        {cursorInside && sectionVisible && (
           <div
             className="fixed z-40 w-16 h-16 md:w-24 md:h-24 pointer-events-auto"
             onClick={handleScrollClick}
